@@ -57,7 +57,7 @@ final ValueChanged? onChange;
     var b=width/500;
     var outlineInputBorder = OutlineInputBorder(
       borderSide: BorderSide(
-        color: borderGreyColor,
+        color: borderColor??borderGreyColor,
         width: 1.5
       ),
       borderRadius: BorderRadius.circular(6),
@@ -103,7 +103,7 @@ final ValueChanged? onChange;
 
             style: TextStyle(
 
-              height: 1.5,
+              // height: 1.5,
               fontSize: size ?? 15,
               fontWeight: FontWeight.normal,
               letterSpacing: spacing ?? 0,
