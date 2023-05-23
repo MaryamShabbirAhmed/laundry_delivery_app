@@ -4,6 +4,8 @@ import 'package:laundry_delivery/screens/dashboardScreens/dashboard.dart';
 import 'package:laundry_delivery/screens/dashboardScreens/home.dart';
 import 'package:provider/provider.dart';
 
+import 'screens/pickupScreens/pickupCloth.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home:  DashboardScreen(),
+        home:  PickupClothScreen(),
       ),
     );
 

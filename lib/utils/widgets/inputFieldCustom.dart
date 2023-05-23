@@ -33,8 +33,8 @@ final ValueChanged? onChange;
   this.hintColor,
   this.borderColor,
   this.labelColor,
-  required this.suffix,
-  required this.isVisibilty,
+   this.suffix,
+   this.isVisibilty,
   this.inputType,
   this.maxLines,
   this.size,
@@ -58,7 +58,7 @@ final ValueChanged? onChange;
     var outlineInputBorder = OutlineInputBorder(
       borderSide: BorderSide(
         color: borderGreyColor,
-        width: 2
+        width: 1.5
       ),
       borderRadius: BorderRadius.circular(6),
 
@@ -67,13 +67,13 @@ final ValueChanged? onChange;
     var outlineInputErrorBorder = OutlineInputBorder(
       borderSide: BorderSide(
           color: redColor,
-          width: 2
+          width: 1.5
       ),
       borderRadius: BorderRadius.circular(6),
 
     );
     return Padding(
-      padding:EdgeInsets.all(12.0),
+      padding:EdgeInsets.all(8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -118,15 +118,24 @@ final ValueChanged? onChange;
 
               isDense: true,
               counterText: '',
-              prefixIcon: suffix != null
-                  ? Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  widthBox(15),
-                  suffix!,
-                ],
-              )
-                  : null,
+              // prefixIcon: suffix != null
+              //     ? Row(
+              //   mainAxisSize: MainAxisSize.min,
+              //   children: [
+              //     widthBox(15),
+              //     suffix!,
+              //   ],
+              // )
+              //     : null,
+              suffixIcon: suffix != null
+    ? Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+    widthBox(15),
+    suffix!,
+    ],
+    )
+        : null,
               hintText: hint,
               hintStyle: TextStyle(
                 fontSize: size ?? 12,
