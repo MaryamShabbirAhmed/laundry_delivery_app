@@ -1,0 +1,23 @@
+import 'package:flutter/material.dart';
+
+Color primaryColor= Color(0xFF5D5FEF);
+Color secondaryColor= Color(0xFF5D5FEF);
+Color blackColor= Colors.black;
+Color borderGreyColor= Color(0xFFC9C9CA);
+Color greenColor= Color(0xFF00C414);
+Color greenLightColor= Color(0xFFF2FEF0);
+Color yellowColor= Color(0xFFFBFF3C);
+Color orangeLightColor= Color(0xFFFFB905);
+Color orangeDarkColor= Color(0xFFF48A3C);
+Color blueShineColor= Color(0xFF4DE4E1);
+Color blueDarkColor= Color(0xFF196893);
+Color redColor= Color(0xFFFF0000);
+Color purpleColor= Color(0xFF3B2082);
+Color pinkColor= Color(0xFFF04469);
+Color whiteColor= Color(0xFFFFFFFF);
+Color greyLightColor= Color(0xFFF5F4F4);
+Color greenishLightColor= Color(0xFFE7F6FA);
+Color greenishColor= Color(0xFF6FBDC0);
+Color yellowLightColor= Color(0xFFFCF8ED);
+Color blueLightColor= Color(0xFFF2F9FF);
+Color redLightColor= Color(0xFFFDEFEF);
