@@ -4,9 +4,12 @@ import 'package:laundry_delivery/providers/dashboardProvider.dart';
 import 'package:laundry_delivery/providers/pickupProvider.dart';
 import 'package:laundry_delivery/screens/dashboardScreens/dashboard.dart';
 import 'package:laundry_delivery/screens/dashboardScreens/home.dart';
+import 'package:laundry_delivery/screens/myProfile.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/pickupScreens/pickupCloth.dart';
+import 'screens/scannerScreen.dart';
+import 'screens/viewList.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,7 +39,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home:  Scaffold(body: PickupClothScreen()),
+        home:  Scaffold(body: MyProfieScreen()),
       ),
     );
 
