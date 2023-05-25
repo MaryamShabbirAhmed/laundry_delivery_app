@@ -3,49 +3,32 @@ import 'package:get/get.dart';
 import 'package:laundry_delivery/providers/dashboardProvider.dart';
 import 'package:laundry_delivery/providers/pickupProvider.dart';
 import 'package:laundry_delivery/screens/dashboardScreens/dashboard.dart';
-import 'package:laundry_delivery/screens/dashboardScreens/home.dart';
-import 'package:laundry_delivery/screens/myProfile.dart';
 import 'package:provider/provider.dart';
-
-import 'screens/pickupScreens/pickupCloth.dart';
-import 'screens/scannerScreen.dart';
-import 'screens/viewList.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
+  MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
-
-
-
     return MultiProvider(
-        providers: [
-      ChangeNotifierProvider(create: (_)=> DashboardProvider()),
-      ChangeNotifierProvider(create: (_)=> PickupProvider()),
-
-        ],
-    child:
-      GetMaterialApp(
+      providers: [
+        ChangeNotifierProvider(create: (_) => DashboardProvider()),
+        ChangeNotifierProvider(create: (_) => PickupProvider()),
+      ],
+      child: GetMaterialApp(
         title: 'Laundry Delivery',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home:  Scaffold(body: MyProfieScreen()),
+        home: Scaffold(body: DashboardScreen()),
       ),
     );
-
-
-
-
   }
 }
-

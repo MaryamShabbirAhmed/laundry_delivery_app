@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,8 +7,6 @@ import 'package:laundry_delivery/utils/widgets/buttonCustom.dart';
 import 'package:laundry_delivery/utils/widgets/inputFieldCustom.dart';
 import 'package:provider/provider.dart';
 import '../../providers/pickupProvider.dart';
-import '../../utils/widgets/snackbars.dart';
-
 
 class PickupClothScreen extends StatefulWidget {
   PickupClothScreen({Key? key}) : super(key: key);
@@ -19,7 +16,6 @@ class PickupClothScreen extends StatefulWidget {
 }
 
 class _PickupClothScreenState extends State<PickupClothScreen> {
-
   @override
   Widget build(BuildContext context) {
     PickupProvider pickupPro = Provider.of(context, listen: false);
@@ -28,7 +24,8 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
       appBar: AppBar(
         title: Text(
           'Pickup Cloths',
-          style: TextStyle(color: blackColor, fontSize: 17, fontWeight: FontWeight.w500),
+          style: TextStyle(
+              color: blackColor, fontSize: 17, fontWeight: FontWeight.w500),
         ),
         leading: IconButton(
           onPressed: () {
@@ -60,7 +57,8 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
                       return Color(0xFFF5F5F5);
                     }),
                     shape: MaterialStateProperty.resolveWith((states) {
-                      return RoundedRectangleBorder();
+                      return RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10));
                     }),
                     leading: Image.asset(
                       'assets/dashboard_images/search.png',
@@ -77,7 +75,6 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
             ),
             InputFieldCustom(
               controller: pickupPro.pickupLocationController2,
-
               label: null,
               hint: 'Apartment / Road / Area',
             ),
@@ -88,7 +85,6 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
             ),
             InputFieldCustom(
               controller: pickupPro.pickupContactController,
-
               label: 'Contact Number',
               hint: 'Enter Contact Number',
             ),
@@ -99,7 +95,6 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
             ),
             InputFieldCustom(
               controller: pickupPro.pickupRemarksController,
-
               label: 'Remarks',
               hint: 'Enter Remarks...',
               maxLines: 4,
@@ -107,14 +102,13 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
               minLines: 4,
             ),
             InputFieldCustom(
-
               readOnly: true,
               controller: pickupPro.pickupDeliveryDateController,
               label: 'Delivery Date',
               hint: 'Select Date',
               suffix: IconButton(
                   onPressed: () async {
-                  await pickupPro.selectDate(context);
+                    await pickupPro.selectDate(context);
                     pickupPro.pickupDeliveryDateController.text =
                         "${pickupPro.selectedDate.toLocal()}".split(' ')[0];
                     setState(() {});
@@ -126,21 +120,23 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
               readOnly: true,
               label: 'Delivery Time',
               hint: 'Select Time',
-              suffix: IconButton(icon: Icon(Icons.access_time_rounded, color: borderGreyColor), onPressed: () async {
-
-pickupPro.getTime(context);
-              },),
+              suffix: IconButton(
+                icon: Icon(Icons.access_time_rounded, color: borderGreyColor),
+                onPressed: () async {
+                  pickupPro.getTime(context);
+                },
+              ),
             ),
-            CustomButton(label: 'Submit Pickup', onPressed: () async {
-              await pickupPro.pickupInputValidation();
-              // successSnackBar('Success', 'Submitted Successfully', context);
-
-
-            },),
+            CustomButton(
+              label: 'Submit Pickup',
+              onPressed: () async {
+                await pickupPro.pickupInputValidation();
+                // successSnackBar('Success', 'Submitted Successfully', context);
+              },
+            ),
           ],
         ),
       ),
     ));
   }
-
 }

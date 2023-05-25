@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:laundry_delivery/screens/dashboardScreens/home.dart';
 
 import '../../utils/colors.dart';
+import '../../utils/widgets/snackbars.dart';
+import 'history.dart';
 
 class DashboardScreen extends StatefulWidget {
   var index;
@@ -20,7 +22,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   void initState() {
     screens = [
       HomeScreen(),
-      HomeScreen(),
+      HistoryScreen(),
       HomeScreen(),
     ];
 
@@ -29,7 +31,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   int index = 0;
   List<NavigationModel> icons = [
-    NavigationModel(icon: Image.asset('assets/dashboard_images/home.png', color: primaryColor,)),
+    NavigationModel(
+        icon: Image.asset(
+      'assets/dashboard_images/home.png',
+      color: primaryColor,
+    )),
     NavigationModel(icon: Image.asset('assets/dashboard_images/recent.png')),
     NavigationModel(icon: Image.asset('assets/dashboard_images/scanner.png')),
   ];
@@ -50,6 +56,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             onTap: (indexMenu) {
               setState(() {
                 index = indexMenu;
+                logger.i(index);
               });
             },
           ),

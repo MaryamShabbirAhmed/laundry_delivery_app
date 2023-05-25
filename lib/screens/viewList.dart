@@ -39,17 +39,21 @@ class _ViewListScreenState extends State<ViewListScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             listViewTile[0],
             listViewTile[1],
-            SizedBox(height: 10,),
-
+            SizedBox(
+              height: 10,
+            ),
           ],
         ),
       ),
     );
   }
-  List<ListviewTile> listViewTile=[
+
+  List<ListviewTile> listViewTile = [
     ListviewTile(status: 'Pending', backgroundColor: orangeLightColor),
     ListviewTile(status: 'Paid', backgroundColor: greenColor),
     ListviewTile(status: 'Paid', backgroundColor: greenColor),
@@ -77,7 +81,9 @@ class ListViewInfoWidget extends StatelessWidget {
                   TextSpan(
                       text: title,
                       style: TextStyle(fontWeight: FontWeight.w500)),
-                  TextSpan(text: info, style: TextStyle(color: darkGreyColor, fontSize: 25)),
+                  TextSpan(
+                      text: info,
+                      style: TextStyle(color: darkGreyColor, fontSize: 25)),
                 ],
               ),
               textScaleFactor: 0.5,
@@ -92,14 +98,15 @@ class ListViewInfoWidget extends StatelessWidget {
 class ListviewTile extends StatelessWidget {
   String status;
   Color backgroundColor;
-   ListviewTile({Key? key, required this.status,required this.backgroundColor}) : super(key: key);
+
+  ListviewTile({Key? key, required this.status, required this.backgroundColor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: whiteColor,
@@ -115,7 +122,8 @@ class ListviewTile extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.topRight,
-              child: StatusWidget(status:status,backgroundColor: backgroundColor),
+              child: StatusWidget(
+                  status: status, backgroundColor: backgroundColor),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -129,7 +137,7 @@ class ListviewTile extends StatelessWidget {
                 ListViewInfoWidget(
                     title: 'Address No: ',
                     info:
-                    'OvalEdge India Private Limited Manjeera Trinity Corporate, #321KPBH, Phase 3, Hyderabad -500072'),
+                        'OvalEdge India Private Limited Manjeera Trinity Corporate, #321KPBH, Phase 3, Hyderabad -500072'),
                 ListViewInfoWidget(title: 'No of cloths: ', info: '05'),
                 ListViewInfoWidget(title: 'Payment: ', info: '500 rs'),
                 ListViewInfoWidget(title: 'Payment type: ', info: 'cash'),
@@ -140,7 +148,4 @@ class ListviewTile extends StatelessWidget {
       ),
     );
   }
-
 }
-
-

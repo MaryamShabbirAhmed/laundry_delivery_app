@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5cd7b8c-2cc1-4df6-b010-215d7b67449f" name="Changes" comment="pickup cloth 0.0.2">
-      <change afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/backgroundProfilePage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/myProfile.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/pickupScreens/pickupCloth.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/scannerScreen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/viewList.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/utils/widgets/statusWidget.dart" afterDir="false" />
+    <list default="true" id="c5cd7b8c-2cc1-4df6-b010-215d7b67449f" name="Changes" comment="profileScreen">
+      <change afterPath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/profileScreens/optVerificationScreen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/smart_auth" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/macos/Flutter/ephemeral/Flutter-Generated.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/macos/Flutter/ephemeral/flutter_export_environment.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/laundry_delivery.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laundry_delivery.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -26,12 +26,20 @@
       <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/dashboard_images/search.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/dashboard_images/search.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/colors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/colors.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/dashboardScreens/dashboard.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/dashboardScreens/dashboard.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/dashboardScreens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/dashboardScreens/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/dashboardScreens/recent.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/dashboardScreens/history.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/myProfile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/profileScreens/myProfile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/pickupScreens/pickupCloth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/pickupScreens/pickupCloth.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/viewList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/viewList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
@@ -68,30 +76,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "C:/Users/Inaam/StudioProjects/laundry_delivery/assets/dashboard_images",
-    "settings.editor.selected.configurable": "flutter.settings",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Inaam/StudioProjects/laundry_delivery/assets/dashboard_images&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Inaam\StudioProjects\laundry_delivery\assets\dashboard_images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Inaam\StudioProjects\laundry_delivery\lib\screens\profileScreens" />
       <recent name="C:\Users\Inaam\StudioProjects\laundry_delivery\assets\images" />
       <recent name="C:\Users\Inaam\StudioProjects\laundry_delivery\assets\dashboard_images" />
       <recent name="C:\Users\Inaam\StudioProjects\laundry_delivery\assets" />
       <recent name="C:\Users\Inaam\StudioProjects\laundry_delivery\lib\screens\dashboardScreens" />
-      <recent name="C:\Users\Inaam\StudioProjects\laundry_delivery\lib\providers" />
     </key>
   </component>
   <component name="RunManager">
@@ -151,7 +159,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1684913637838</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL‎-00007" summary="profileScreen">
+      <created>1685001482583</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL‎-00007" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1685001482583</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -209,7 +224,8 @@
     <MESSAGE value="pickup cloth" />
     <MESSAGE value="pickup cloth 0.0.1" />
     <MESSAGE value="pickup cloth 0.0.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="pickup cloth 0.0.2" />
+    <MESSAGE value="profileScreen" />
+    <option name="LAST_COMMIT_MESSAGE" value="profileScreen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
