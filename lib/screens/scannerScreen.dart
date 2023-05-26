@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:laundry_delivery/utils/colors.dart';
+import 'package:laundry_delivery/utils/widgets/snackbars.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 class ScannerScreen extends StatefulWidget {
@@ -77,8 +79,11 @@ class _ScannerScreenState extends State<ScannerScreen> {
             final List<Barcode> barcodes = capture.barcodes;
             final Uint8List? image = capture.image;
             for (final barcode in barcodes) {
-              debugPrint('Barcode found! ${barcode.rawValue}');
+              successSnackBar('Barcode found!','${barcode.rawValue}');
+              // debugPrint('Barcode found! ${barcode.rawValue}');
+            break;
             }
+
           },
         ),
       ),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:laundry_delivery/screens/dashboardScreens/home.dart';
+import 'package:laundry_delivery/screens/scannerScreen.dart';
 
 import '../../utils/colors.dart';
 import '../../utils/widgets/snackbars.dart';
-import 'history.dart';
+import '../historyScreens/history.dart';
 
 class DashboardScreen extends StatefulWidget {
   var index;
@@ -23,7 +24,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     screens = [
       HomeScreen(),
       HistoryScreen(),
-      HomeScreen(),
+      ScannerScreen(),
     ];
 
     super.initState();
@@ -56,7 +57,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             onTap: (indexMenu) {
               setState(() {
                 index = indexMenu;
-                logger.i(index);
+
               });
             },
           ),
