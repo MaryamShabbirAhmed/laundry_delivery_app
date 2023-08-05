@@ -113,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    width: Get.width / 2.8,
+                    width: Get.width / 2.3,
                     decoration: BoxDecoration(
                       color: greyLightColor,
                       borderRadius: BorderRadius.circular(5),
@@ -132,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   Container(
-                    width: Get.width / 2.8,
+                    width: Get.width / 2.3,
                     decoration: BoxDecoration(
                       color: greyLightColor,
                       borderRadius: BorderRadius.circular(5),
@@ -156,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
             ///dashboard
             Padding(
-              padding: const EdgeInsets.only(top: 18.0, left: 10),
+              padding: const EdgeInsets.only(top: 18.0, left: 13),
               child: Text(
                 'Dashboard',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
@@ -204,7 +204,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
             ///financials
             Padding(
-              padding: const EdgeInsets.only(top: 18.0, left: 10),
+              padding: const EdgeInsets.only(top: 18.0, left: 13),
               child: Text(
                 'Financials',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
@@ -237,7 +237,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 FinancialsCard(
                   backgroundColor: yellowLightColor,
                   title: 'Pickup pending from store',
-                  titleColor: yellowColor,
+                  titleColor: orangeLightColor,
                   icon: 'assets/dashboard_images/storepending.png',
                   number: '10',
                 ),
@@ -360,6 +360,7 @@ class FinancialsCard extends StatelessWidget {
       child: Container(
         // height:84,
         width: Get.width / 2.3,
+        height: 120,
         decoration: BoxDecoration(
             color: backgroundColor, borderRadius: BorderRadius.circular(6)),
         child: Column(
