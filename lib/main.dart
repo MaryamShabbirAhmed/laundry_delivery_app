@@ -5,6 +5,8 @@ import 'package:laundry_delivery/providers/pickupProvider.dart';
 import 'package:laundry_delivery/screens/dashboardScreens/dashboard.dart';
 import 'package:provider/provider.dart';
 
+import 'screens/userAuthScreens/LoginScreen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: Scaffold(body: DashboardScreen()),
+        home: Scaffold(body: LoginScreen()),
       ),
     );
   }
