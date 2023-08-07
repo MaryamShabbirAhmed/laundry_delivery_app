@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:laundry_delivery/screens/pickupScreens/pickupItemSelect.dart';
 
 import 'package:laundry_delivery/utils/colors.dart';
 import 'package:laundry_delivery/utils/widgets/buttonCustom.dart';
@@ -88,19 +89,19 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
               label: 'Contact Number',
               hint: 'Enter Contact Number',
             ),
-            InputFieldCustom(
-              controller: pickupPro.pickupPacketController,
-              label: 'Pickup packets',
-              hint: 'Enter Pick Up Packets',
-            ),
-            InputFieldCustom(
-              controller: pickupPro.pickupRemarksController,
-              label: 'Remarks',
-              hint: 'Enter Remarks...',
-              maxLines: 4,
-              inputType: TextInputType.multiline,
-              minLines: 4,
-            ),
+            // InputFieldCustom(
+            //   controller: pickupPro.pickupPacketController,
+            //   label: 'Pickup packets',
+            //   hint: 'Enter Pick Up Packets',
+            // ),
+            // InputFieldCustom(
+            //   controller: pickupPro.pickupRemarksController,
+            //   label: 'Remarks',
+            //   hint: 'Enter Remarks...',
+            //   maxLines: 4,
+            //   inputType: TextInputType.multiline,
+            //   minLines: 4,
+            // ),
             InputFieldCustom(
               readOnly: true,
               controller: pickupPro.pickupDeliveryDateController,
@@ -128,9 +129,11 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
               ),
             ),
             CustomButton(
-              label: 'Submit Pickup',
+              label: 'Next',
               onPressed: () async {
-                await pickupPro.pickupInputValidation();
+
+Get.to(PickupItemSelectionScreen());
+                // await pickupPro.pickupInputValidation();
                 // successSnackBar('Success', 'Submitted Successfully', context);
               },
             ),

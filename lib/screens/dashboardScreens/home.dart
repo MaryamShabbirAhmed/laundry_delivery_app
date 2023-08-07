@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:laundry_delivery/screens/pickupScreens/pickupCloth.dart';
 import 'package:laundry_delivery/utils/colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -62,21 +63,28 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 15.0, right: 15),
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(100),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: Icon(
-                                      Icons.add,
-                                      color: primaryColor,
+                            InkWell(
+                              onTap: (){
+                                Get.to(PickupClothScreen());
+
+                              },
+
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 15.0, right: 15),
+                                child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(100),
                                     ),
-                                  )),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: Icon(
+                                        Icons.add,
+                                        color: primaryColor,
+                                      ),
+                                    )),
+                              ),
                             ),
                             Image.asset(
                                 'assets/dashboard_images/notification.png'),
