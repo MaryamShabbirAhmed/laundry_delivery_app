@@ -29,7 +29,22 @@ Future<void> errorSnackBar(String title ,String message) async {
 
   ).show(Get.context!);
 }
-
+// Future<void> infoSnackBar(String message) async {
+  //   await Get.snackbar(
+  //     duration: Duration(seconds: 3),
+  //     backgroundColor: Colors.black,
+  //     margin: EdgeInsets.zero,
+  //     borderRadius: 0,
+  //     "Alert",
+  //     message,
+  //     colorText: Colors.white,
+  //     icon: Icon(
+  //       Icons.info_outline,
+  //       color: Colors.white,
+  //       size: 40,
+  //     ),
+  //   );
+  // }
 
 
 Logger logger = Logger();

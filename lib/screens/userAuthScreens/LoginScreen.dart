@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:laundry_delivery/providers/authProvider.dart';
+import 'package:laundry_delivery/screens/dashboardScreens/dashboard.dart';
+import 'package:laundry_delivery/screens/userAuthScreens/signupScreen.dart';
+import 'package:laundry_delivery/utils/colors.dart';
 import 'package:laundry_delivery/utils/widgets/buttonCustom.dart';
 import 'package:laundry_delivery/utils/widgets/snackbars.dart';
+import 'package:provider/provider.dart';
 
+import '../../utils/providerVeriables.dart';
 import '../../utils/widgets/inputFieldCustom.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,67 +19,80 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController password = TextEditingController();
-  bool _validateEmail(String email) {
-    final RegExp emailRegExp = RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
-    return emailRegExp.hasMatch(email);
-  }
-  InputDecoration _buildInputDecoration(String hintText) {
-    return InputDecoration(
-      hintText: hintText,
-      errorText: _validateEmail(_emailController.text) ? null : 'Invalid email',
-    );
-  }
-
 
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-      body: Column(
-        children: [
-          SizedBox(height: 40,),
-      Container(
-          height: 150,
-          child: Image.asset('assets/images/logo.png',)),
-          SizedBox(height: 30,),
-      InputFieldCustom(
-        label: 'Enter Your Email',
-        controller: _emailController,
-        decoration: _buildInputDecoration('Enter your email'),
-      ),
-      InputFieldCustom(
-        label: 'Enter Your Password',
-        controller: password,
+    return Consumer<AuthProvider>(builder: (context, authData, child) {
+      return SafeArea(
+          child: Scaffold(
+        body: Column(
+          children: [
+            SizedBox(
+              height: 40,
+            ),
+            Container(
+                height: 150,
+                child: Image.asset(
+                  'assets/images/logo.png',
+                )),
+            SizedBox(
+              height: 30,
+            ),
+            InputFieldCustom(
+              label: 'Enter Your Email',
+              controller: authPro.emailController,
+              decoration: authPro.buildInputDecoration('Enter your email'),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 8.0, right: 8),
+              child: AppTextFieldPassword(
+                label: 'Enter Password',
+                error: false,
+                controller: authPro.password,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(),
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: InkWell(
+                      onTap: () {},
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.w500),
+                      )),
+                ),
+              ],
+            ),
+            CustomButton(
+              label: 'Login',
+              onPressed: () async {
+                bool isValid = await authPro.checkLoginValidation();
 
+                if (isValid) {
 
+                  Get.to(DashboardScreen());
+                  await successSnackBar(
+                      'Great!', 'you are Signed In successfully');
+                } else {
 
-      ),
-          AppTextFieldPassword(label: 'Enter Password',error: false,),
-          CustomButton(label: 'Login'
-          ,
-          onPressed: (){
-            if (_validateEmail(_emailController.text)) {
-
-              successSnackBar('Great!', 'you are logged in successfully');
-
-
-
-
-
-
-
-
-            } else {
-             errorSnackBar('Error', 'Invalid Email Format');
-
-            }
-          },
-          ),
-        ],
-      ),
-    ));
+                }
+              },
+            ),
+            CustomButton(
+              label: 'Sign Up',
+              colorButton: greenishColor,
+              onPressed: () {
+                Get.to(SignupScreen());
+              },
+            ),
+          ],
+        ),
+      ));
+    });
   }
 }

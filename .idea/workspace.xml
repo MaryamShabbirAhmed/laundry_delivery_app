@@ -5,11 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5cd7b8c-2cc1-4df6-b010-215d7b67449f" name="Changes" comment="laundry items selection">
-      <change afterPath="$PROJECT_DIR$/assets/images/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/providers/authProvider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/providers/customerProvider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/responses/userLoginResponse.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/customerScreens/search customer.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/userAuthScreens/signupScreen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/services/apiServices.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/services/apiURL.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/splashScreen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/utils/userStorage.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laundry_delivery.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laundry_delivery.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/dashboardScreens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/dashboardScreens/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/userAuthScreens/LoginScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/userAuthScreens/LoginScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/const/consts.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/const/consts.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/providerVeriables.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/providerVeriables.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/utils/widgets/inputFieldCustom.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/widgets/inputFieldCustom.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/widgets/snackbars.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/widgets/snackbars.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

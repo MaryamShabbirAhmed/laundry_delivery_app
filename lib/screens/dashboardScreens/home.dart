@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:laundry_delivery/screens/pickupScreens/pickupCloth.dart';
 import 'package:laundry_delivery/utils/colors.dart';
+import 'package:laundry_delivery/utils/userStorage.dart';
+
+import '../customerScreens/search customer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,6 +14,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState(){
+
+    super.initState();
+    StorageCRUD.getUser();
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -65,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             InkWell(
                               onTap: (){
-                                Get.to(PickupClothScreen());
+                                Get.to(SearchCustomer());
 
                               },
 
@@ -103,7 +115,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Text(
-                      'Dreke Doyal,',
+                      StorageCRUD.getUser().data!.name ==null
+                      ?
+                      'Driver Name,'
+                          :
+                      StorageCRUD.getUser().data!.name.toString()
+                     ,
                       style: TextStyle(
                           color: whiteColor,
                           fontSize: 30,

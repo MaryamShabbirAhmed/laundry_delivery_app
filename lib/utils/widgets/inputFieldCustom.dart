@@ -60,7 +60,7 @@ final ValueChanged? onChange;
     var b=width/500;
     var outlineInputBorder = OutlineInputBorder(
       borderSide: BorderSide(
-        color: borderColor??borderGreyColor,
+        color: borderColor??secondaryColor,
         width: 1.5
       ),
       borderRadius: BorderRadius.circular(6),
@@ -286,7 +286,7 @@ class _AppTextFieldPasswordState extends State<AppTextFieldPassword> {
             ],
           ),
         ),
-        SizedBox(height:10),
+        // SizedBox(height:10),
         widget.error!
             ? widget.isMisMatch!
             ? Text(
