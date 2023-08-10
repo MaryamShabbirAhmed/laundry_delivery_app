@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:laundry_delivery/providers/authProvider.dart';
-import 'package:laundry_delivery/providers/customerProvider.dart';
 import 'package:laundry_delivery/providers/dashboardProvider.dart';
+import 'package:laundry_delivery/providers/historyDataProvider.dart';
 import 'package:laundry_delivery/providers/pickupProvider.dart';
 import 'package:provider/provider.dart';
 import 'splashScreen.dart';
@@ -29,15 +29,15 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => DashboardProvider()),
         ChangeNotifierProvider(create: (_) => PickupProvider()),
         ChangeNotifierProvider(create: (_) => AuthProvider()),
-        ChangeNotifierProvider(create: (_) => CustomerProvider()),
+        ChangeNotifierProvider(create: (_) => HistoryProvider()),
       ],
       child: GetMaterialApp(
         title: 'Laundry Delivery',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        // theme: ThemeData(
+        //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        //   useMaterial3: true,
+        // ),
         home: Scaffold(
 
             body: SplashScreen()

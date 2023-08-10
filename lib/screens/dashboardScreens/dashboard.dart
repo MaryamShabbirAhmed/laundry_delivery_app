@@ -3,7 +3,7 @@ import 'package:laundry_delivery/screens/dashboardScreens/home.dart';
 import 'package:laundry_delivery/screens/scannerScreen.dart';
 
 import '../../utils/colors.dart';
-import '../../utils/widgets/snackbars.dart';
+
 import '../historyScreens/history.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -32,13 +32,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   int index = 0;
   List<NavigationModel> icons = [
-    NavigationModel(
-        icon: Image.asset(
-      'assets/dashboard_images/home.png',
-      color: primaryColor,
+    NavigationModel(  icon: Image.asset( 'assets/dashboard_images/home.png',
     )),
-    NavigationModel(icon: Image.asset('assets/dashboard_images/recent.png')),
-    NavigationModel(icon: Image.asset('assets/dashboard_images/scanner.png')),
+    NavigationModel(icon: Icon(Icons.history)),
+    NavigationModel(icon:Icon(Icons.qr_code_scanner)),
   ];
 
   @override
@@ -49,7 +46,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           child: BottomNavigationBar(
             currentIndex: index,
             selectedFontSize: 12,
-            selectedItemColor: primaryColor,
+            selectedItemColor: secondaryColor,
             unselectedItemColor: borderGreyColor,
             items: icons.map((e) {
               return BottomNavigationBarItem(icon: e.icon, label: e.label);
@@ -57,7 +54,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
             onTap: (indexMenu) {
               setState(() {
                 index = indexMenu;
-
               });
             },
           ),

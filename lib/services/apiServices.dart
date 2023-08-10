@@ -4,13 +4,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:laundry_delivery/utils/widgets/snackbars.dart';
 
+import '../responses/getAllItemsResponse.dart';
 import 'apiURL.dart';
 
 class ApiServices {
 
  static final headers = {'Content-Type': 'application/json'};
 
-  static Future<String> postMethod(Map<String, String> fields,
+  static Future<String> postMethod(Map<String, dynamic> fields,
       @required String feedURL,) async {
     http.Request request = http.Request('POST', Uri.parse(baseURL + feedURL));
     request.headers.addAll(headers);
@@ -50,14 +51,15 @@ class ApiServices {
          return "";
        }
   }
-  // static Future<String> getWithBody(
-  //     @required String feedURL,
-  //     Map<String, String>
-  //
-  //
-  //     ){
-  //
-  // }
 
-
+ // static Future<GetAllItemsResponse> fetchAllItems() async {
+ //   // Fetch your data here from the server
+ //   final response = await http.get(Uri.parse(baseURL+getAllItemsURL));
+ //   if (response.statusCode == 200) {
+ //     final Map<String, dynamic> responseData = json.decode(response.body);
+ //     return GetAllItemsResponse.fromJson(responseData);
+ //   } else {
+ //     throw Exception('Failed to load items');
+ //   }
+ // }
 }

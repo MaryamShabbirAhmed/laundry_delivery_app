@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:laundry_delivery/providers/pickupProvider.dart';
 import 'package:laundry_delivery/screens/pickupScreens/pickupCloth.dart';
+import 'package:laundry_delivery/screens/userAuthScreens/signupScreen.dart';
 import 'package:laundry_delivery/utils/colors.dart';
+import 'package:laundry_delivery/utils/providerVeriables.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/customerProvider.dart';
 import '../../utils/widgets/buttonCustom.dart';
-import '../../utils/widgets/inputFieldCustom.dart';
-import '../../utils/widgets/snackbars.dart';
+
 
 class SearchCustomer extends StatefulWidget {
   const SearchCustomer({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _SearchCustomerState extends State<SearchCustomer> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CustomerProvider>(builder: (context, custData, child) {
+    return Consumer<PickupProvider>(builder: (context, pickupPro, child) {
       return SafeArea(
           child: Scaffold(
             appBar: AppBar(
@@ -60,7 +61,7 @@ class _SearchCustomerState extends State<SearchCustomer> {
                     initialCountryCode: 'US', // Initial country code
                     onChanged: (phone) {
                       if( phone.isValidNumber()){
-                        custData.userPhoneNumberController.text =
+                        pickupPro.userPhoneNumberController.text =
                             phone.completeNumber;
                       }
 
@@ -73,14 +74,15 @@ class _SearchCustomerState extends State<SearchCustomer> {
                 CustomButton(
                   label: 'Search',
                   onPressed: () async {
-
+                    pickupPro.searchCustomer();
                   },
                 ),
                 CustomButton(
                   label: 'Add New Customer',
                   colorButton: greenishColor,
                   onPressed: () async {
-                  Get.to(PickupClothScreen());
+                    authPro.isDriver=false;
+                  Get.to(SignupScreen());
                   },
                 ),
 

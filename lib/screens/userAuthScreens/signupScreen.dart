@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:laundry_delivery/providers/authProvider.dart';
+import 'package:laundry_delivery/screens/customerScreens/search%20customer.dart';
 import 'package:laundry_delivery/screens/dashboardScreens/dashboard.dart';
 import 'package:laundry_delivery/utils/widgets/buttonCustom.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +10,7 @@ import '../../utils/colors.dart';
 import '../../utils/providerVeriables.dart';
 import '../../utils/widgets/inputFieldCustom.dart';
 import '../../utils/widgets/snackbars.dart';
+import '../pickupScreens/pickupCloth.dart';
 
 class SignupScreen extends StatefulWidget {
   SignupScreen({Key? key}) : super(key: key);
@@ -23,17 +25,36 @@ class _SignupScreenState extends State<SignupScreen> {
     return Consumer<AuthProvider>(builder: (context, authData, child) {
       return SafeArea(
           child: Scaffold(
+
+            appBar:
+            authPro.isDriver?
+                AppBar(
+                  leading: Container(),
+                )
+                :
+            AppBar(
+              backgroundColor: secondaryColor,
+              title: Text('Add new Customer', style: TextStyle(color: whiteColor),),
+              centerTitle: true,
+              leading: IconButton( onPressed: () {  Get.back();}, icon: Icon(Icons.arrow_back_ios, color: whiteColor,),),
+
+            ),
+
         body: SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(
                 height: 40,
               ),
+              authPro.isDriver ?
               Container(
                   height: 150,
                   child: Image.asset(
                     'assets/images/logo.png',
-                  )),
+                  )):
+              SizedBox(
+                height: 30,
+              ),
               SizedBox(
                 height: 30,
               ),
@@ -62,14 +83,18 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
               ),
               InputFieldCustom(
+                borderColor: secondaryColor,
                 label: 'Enter Your Name',
                 controller: authPro.userNameController,
               ),
               InputFieldCustom(
+                borderColor: secondaryColor,
+
                 label: 'Enter Your Email',
                 controller: authPro.emailController,
                 decoration: authPro.buildInputDecoration('Enter your email'),
               ),
+              if(authPro.isDriver)
               Padding(
                 padding: EdgeInsets.only(left: 8.0, right: 8),
                 child: AppTextFieldPassword(
@@ -78,6 +103,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   controller: authPro.password,
                 ),
               ),
+              if(authPro.isDriver)
               Padding(
                 padding: EdgeInsets.only(left: 8.0, right: 8),
                 child: AppTextFieldPassword(
@@ -87,17 +113,26 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
               ),
               CustomButton(
-                label: 'Sign Up',
+                label: authPro.isDriver?'Sign Up':'Add Customer',
                 colorButton: greenishColor,
                 onPressed: () async {
                   bool isValid = await authPro.checkSignUpValidation();
                   if (isValid) {
-                    Get.offAll(DashboardScreen());
-                    successSnackBar('Great!', 'you are Signed Up successfully');
-
+                    if(authData.isDriver) {
+                      Get.offAll(DashboardScreen());
+                      successSnackBar(
+                          'Great!', 'you are Signed Up successfully');
+                    }
+                    else
+                      {
+                        Get.back();
+                        successSnackBar(
+                            'Great!', 'Customer has been created!');
+                      }
                   }
                 },
               ),
+              SizedBox(height: 20,)
             ],
           ),
         ),

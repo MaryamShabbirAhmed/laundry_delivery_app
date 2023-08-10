@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:laundry_delivery/providers/historyDataProvider.dart';
 import 'package:laundry_delivery/screens/pickupScreens/pickupCloth.dart';
 import 'package:laundry_delivery/utils/colors.dart';
 import 'package:laundry_delivery/utils/userStorage.dart';
+import 'package:provider/provider.dart';
 
+import '../../responses/getAllOrdersById.dart';
+import '../../utils/providerVeriables.dart';
 import '../customerScreens/search customer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,290 +18,302 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // late Future<GetAllOrdersByIdResponse> getHistory;
   @override
   void initState(){
 
     super.initState();
     StorageCRUD.getUser();
+    // getHistory=historyPro.getOrderHistory();
+    historyPro.getDashboardDetail();
 
   }
 
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ///
-            Container(
-              height: 170,
-              color: primaryColor,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          height: 45,
-                          width: 45,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white, width: 2),
-                            borderRadius: BorderRadius.circular(100),
-                            image: DecorationImage(
-                                image: AssetImage('assets/images/profile.jpg')),
-                          ),
-                        ),
-                        Row(
+    return Consumer<HistoryProvider>(
+      builder: (context, histryPro, child) {
+        return SafeArea(
+            child: Scaffold(
+          body: SingleChildScrollView(
+            child: Container(
+                child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ///
+                Container(
+                  height: 170,
+                  color: primaryColor,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              height: 30,
-                              width: Get.width / 1.8,
-                              child: Center(
-                                child: SearchBar(
-                                  hintText: 'search customer or mobile no',
-                                  hintStyle: MaterialStateProperty.resolveWith((states) {
-                                    return TextStyle(color: borderGreyColor, fontSize: 13);
-                                  }),
-                                  shape: MaterialStateProperty.resolveWith((states) {
-                                    return RoundedRectangleBorder(borderRadius: BorderRadius.circular(10));
-                                  }),
+                              height: 45,
+                              width: 45,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.white, width: 2),
+                                borderRadius: BorderRadius.circular(100),
+                                image: DecorationImage(
+                                    image: AssetImage('assets/images/profile.jpg')),
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  height: 30,
+                                  width: Get.width / 1.8,
+                                  child: Center(
+                                    child: SearchBar(
+                                      hintText: 'search customer or mobile no',
+                                      hintStyle: MaterialStateProperty.resolveWith((states) {
+                                        return TextStyle(color: borderGreyColor, fontSize: 13);
+                                      }),
+                                      shape: MaterialStateProperty.resolveWith((states) {
+                                        return RoundedRectangleBorder(borderRadius: BorderRadius.circular(10));
+                                      }),
 // padding: MaterialStateProperty.resolveWith((states) {return EdgeInsets.only(bottom:0);}),
-                                 trailing: [
-                                    Image.asset('assets/dashboard_images/search.png'),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            InkWell(
-                              onTap: (){
-                                Get.to(SearchCustomer());
-
-                              },
-
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 15.0, right: 15),
-                                child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(100),
+                                     trailing: [
+                                        Image.asset('assets/dashboard_images/search.png'),
+                                      ],
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(4.0),
-                                      child: Icon(
-                                        Icons.add,
-                                        color: primaryColor,
-                                      ),
-                                    )),
-                              ),
-                            ),
-                            Image.asset(
-                                'assets/dashboard_images/notification.png'),
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: (){
+                                    Get.to(SearchCustomer());
+
+                                  },
+
+                                  child: Padding(
+                                    padding:
+                                        const EdgeInsets.only(left: 15.0, right: 15),
+                                    child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(100),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: Icon(
+                                            Icons.add,
+                                            color: primaryColor,
+                                          ),
+                                        )),
+                                  ),
+                                ),
+                                Image.asset(
+                                    'assets/dashboard_images/notification.png'),
+                              ],
+                            )
                           ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text(
-                      'Hello,',
-                      style: TextStyle(color: whiteColor, fontSize: 25),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text(
-                      StorageCRUD.getUser().data!.name ==null
-                      ?
-                      'Driver Name,'
-                          :
-                      StorageCRUD.getUser().data!.name.toString()
-                     ,
-                      style: TextStyle(
-                          color: whiteColor,
-                          fontSize: 30,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            ///delivery ///pickup
-            Padding(
-              padding: EdgeInsets.only(top: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    width: Get.width / 2.3,
-                    decoration: BoxDecoration(
-                      color: greyLightColor,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        top: 5.0,
-                        bottom: 5,
+                        ),
                       ),
-                      child: Center(
-                          child: Text(
-                        'Delivery',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      )),
-                    ),
-                  ),
-                  Container(
-                    width: Get.width / 2.3,
-                    decoration: BoxDecoration(
-                      color: greyLightColor,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        top: 5.0,
-                        bottom: 5,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Text(
+                          'Hello,',
+                          style: TextStyle(color: whiteColor, fontSize: 25),
+                        ),
                       ),
-                      child: Center(
-                          child: Text(
-                        'Pickup',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      )),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Text(
+                          StorageCRUD.getUser().data!.name ==null
+                          ?
+                          'Driver Name,'
+                              :
+                          StorageCRUD.getUser().data!.name.toString()
+                         ,
+                          style: TextStyle(
+                              color: whiteColor,
+                              fontSize: 30,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                ///delivery ///pickup
+                Padding(
+                  padding: EdgeInsets.only(top: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        width: Get.width / 2.3,
+                        decoration: BoxDecoration(
+                          color: greyLightColor,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: 5.0,
+                            bottom: 5,
+                          ),
+                          child: Center(
+                              child: Text(
+                            'Delivery',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          )),
+                        ),
+                      ),
+                      Container(
+                        width: Get.width / 2.3,
+                        decoration: BoxDecoration(
+                          color: greyLightColor,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: 5.0,
+                            bottom: 5,
+                          ),
+                          child: Center(
+                              child: Text(
+                            'Pickup',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          )),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                ///dashboard
+                Padding(
+                  padding: const EdgeInsets.only(top: 18.0, left: 13),
+                  child: Text(
+                    'Dashboard',
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+                  ),
+                ),
+
+                ///dashboard option box
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    dashboardCard(
+                      backgroundColor: pinkColor,
+                      title: 'Total Pickups',
+                      icon: 'assets/dashboard_images/totalPickup.png',
+                      number:
+                      historyPro.getDashboardOrdersResponse !=null ?
+                      historyPro.getDashboardOrdersResponse!.data!.totalOrders!.toString(): '0',
                     ),
+                    dashboardCard(
+                      backgroundColor: blueShineColor,
+                      title: 'Pending Pickups',
+                      icon: 'assets/dashboard_images/pendingPickup.png',
+                      number:  historyPro.getDashboardOrdersResponse !=null ?
+                      historyPro.getDashboardOrdersResponse!.data!.pendingOrders!.toString(): '0',
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      dashboardCard(
+                        backgroundColor: purpleColor,
+                        title: 'Completed Pickups',
+                        icon: 'assets/dashboard_images/completedickup.png',
+                        number:  historyPro.getDashboardOrdersResponse !=null ?
+                        historyPro.getDashboardOrdersResponse!.data!.deliveredOrders!.toString(): '0',
+                      ),
+                      dashboardCard(
+                        backgroundColor: orangeDarkColor,
+                        title: 'Old Pending Pickups',
+                        icon: 'assets/dashboard_images/oldPickup.png',
+                        number:  historyPro.getDashboardOrdersResponse !=null ?
+                        historyPro.getDashboardOrdersResponse!.data!.oldOrders!.toString(): '0',
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-
-            ///dashboard
-            Padding(
-              padding: const EdgeInsets.only(top: 18.0, left: 13),
-              child: Text(
-                'Dashboard',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
-              ),
-            ),
-
-            ///dashboard option box
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                dashboardCard(
-                  backgroundColor: pinkColor,
-                  title: 'Total Pickups',
-                  icon: 'assets/dashboard_images/totalPickup.png',
-                  number: '03',
                 ),
-                dashboardCard(
-                  backgroundColor: blueShineColor,
-                  title: 'Pending Pickups',
-                  icon: 'assets/dashboard_images/pendingPickup.png',
-                  number: '03',
-                ),
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 15.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  dashboardCard(
-                    backgroundColor: purpleColor,
-                    title: 'Completed Pickups',
-                    icon: 'assets/dashboard_images/completedickup.png',
-                    number: '03',
+
+                ///financials
+                Padding(
+                  padding: const EdgeInsets.only(top: 18.0, left: 13),
+                  child: Text(
+                    'Financials',
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
                   ),
-                  dashboardCard(
-                    backgroundColor: orangeDarkColor,
-                    title: 'Old Pending Pickups',
-                    icon: 'assets/dashboard_images/oldPickup.png',
-                    number: '02',
-                  ),
-                ],
-              ),
-            ),
+                ),
 
-            ///financials
-            Padding(
-              padding: const EdgeInsets.only(top: 18.0, left: 13),
-              child: Text(
-                'Financials',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
-              ),
-            ),
-
-            ///financials box
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                FinancialsCard(
-                  backgroundColor: greenishLightColor,
-                  title: 'Total cash in hands',
-                  titleColor: greenishColor,
-                  icon: 'assets/dashboard_images/financialMoney.png',
-                  number: '5000',
+                ///financials box
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    FinancialsCard(
+                      backgroundColor: greenishLightColor,
+                      title: 'Total cash in hands',
+                      titleColor: greenishColor,
+                      icon: 'assets/dashboard_images/financialMoney.png',
+                      number: '5000',
+                    ),
+                    FinancialsCard(
+                      backgroundColor: greenishLightColor,
+                      title: 'Pending cash',
+                      titleColor: greenishColor,
+                      icon: 'assets/dashboard_images/pendingcash.png',
+                      number: '2000',
+                    ),
+                  ],
                 ),
-                FinancialsCard(
-                  backgroundColor: greenishLightColor,
-                  title: 'Pending cash',
-                  titleColor: greenishColor,
-                  icon: 'assets/dashboard_images/pendingcash.png',
-                  number: '2000',
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    FinancialsCard(
+                      backgroundColor: yellowLightColor,
+                      title: 'Pickup pending from store',
+                      titleColor: orangeLightColor,
+                      icon: 'assets/dashboard_images/storepending.png',
+                      number: '10',
+                    ),
+                    FinancialsCard(
+                      backgroundColor: blueLightColor,
+                      title: 'Total deliveries today',
+                      titleColor: blueDarkColor,
+                      icon: 'assets/dashboard_images/totaldeliveries.png',
+                      number: '20',
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                FinancialsCard(
-                  backgroundColor: yellowLightColor,
-                  title: 'Pickup pending from store',
-                  titleColor: orangeLightColor,
-                  icon: 'assets/dashboard_images/storepending.png',
-                  number: '10',
-                ),
-                FinancialsCard(
-                  backgroundColor: blueLightColor,
-                  title: 'Total deliveries today',
-                  titleColor: blueDarkColor,
-                  icon: 'assets/dashboard_images/totaldeliveries.png',
-                  number: '20',
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                FinancialsCard(
-                  backgroundColor: redLightColor,
-                  title: 'Delivery pending in van',
-                  titleColor: redColor,
-                  icon: 'assets/dashboard_images/vanpending.png',
-                  number: '5',
-                ),
-                FinancialsCard(
-                  backgroundColor: greenLightColor,
-                  title: 'Over due Deliveries ',
-                  titleColor: greenColor,
-                  icon: 'assets/dashboard_images/overdue.png',
-                  number: '10',
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    FinancialsCard(
+                      backgroundColor: redLightColor,
+                      title: 'Delivery pending in van',
+                      titleColor: redColor,
+                      icon: 'assets/dashboard_images/vanpending.png',
+                      number: '5',
+                    ),
+                    FinancialsCard(
+                      backgroundColor: greenLightColor,
+                      title: 'Over due Deliveries ',
+                      titleColor: greenColor,
+                      icon: 'assets/dashboard_images/overdue.png',
+                      number: '10',
+                    ),
+                  ],
                 ),
               ],
-            ),
-          ],
-        )),
-      ),
-    ));
+            )),
+          ),
+        ));
+      }
+    );
   }
 }
 

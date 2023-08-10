@@ -60,7 +60,7 @@ final ValueChanged? onChange;
     var b=width/500;
     var outlineInputBorder = OutlineInputBorder(
       borderSide: BorderSide(
-        color: borderColor??secondaryColor,
+        color: borderColor??borderGreyColor,
         width: 1.5
       ),
       borderRadius: BorderRadius.circular(6),
