@@ -24,149 +24,219 @@ class _LaundrySelectionScreenState extends State<LaundrySelectionScreen> {
   @override
   void initState() {
     super.initState();
-    futureItems = pickupPro.getAllItems();
+   pickupPro.getAllItems();
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: Icon(
-              Icons.arrow_back_ios_new_outlined,
-              color: whiteColor,
-            ),
-          ),
-          centerTitle: true,
-          backgroundColor: secondaryColor,
-          title: Text(
-            'Laundry Selection',
-            style: TextStyle(
-              color: whiteColor,
-            ),
-          ),
-        ),
-        body: FutureBuilder<GetAllItemsResponse>(
-          future: futureItems,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              return Center(child: Text('Error: ${snapshot.error}'));
-            } else if (!snapshot.hasData || snapshot.data?.data == null) {
-              return Center(child: Text('No data available'));
-            } else {
-              List<Datum> allLaundryItems = snapshot.data!.data!;
-
-              return SingleChildScrollView(
-                child: Container(
-                  padding: EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      ExpansionPanelList(
-                        elevation: 1,
-                        expandedHeaderPadding: EdgeInsets.all(0),
-                        expansionCallback: (int index, bool isExpanded) {
-                          final item = allLaundryItems[index];
-                          Provider.of<PickupProvider>(context, listen: false)
-                              .toggleItemSelection(item);
-                        },
-                        children:
-                            allLaundryItems.map<ExpansionPanel>((Datum item) {
-                          return ExpansionPanel(
-                            headerBuilder:
-                                (BuildContext context, bool isExpanded) {
-                              return ListTile(
-                                title: Text(item.name ?? ''),
-                              );
-                            },
-                            body: Column(
-                              children: [
-                                // ListTile(
-                                //   title: Text('Price per item: \$${item.pricePerItem ?? 0}'),
-                                //   trailing: Row(
-                                //     mainAxisSize: MainAxisSize.min,
-                                //     children: [
-                                //       IconButton(
-                                //         icon: Icon(Icons.remove),
-                                //         onPressed: () {
-                                //           // Decrease quantity
-                                //         },
-                                //       ),
-                                //       Text(item.quantity.toString()),
-                                //       IconButton(
-                                //         icon: Icon(Icons.add),
-                                //         onPressed: () {
-                                //           // Increase quantity
-                                //         },
-                                //       ),
-                                //     ],
-                                //   ),
-                                // ),
-                                ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: item.laundryItems?.length ?? 0,
-                                  itemBuilder: (context, index) {
-                                    final laundry = item.laundryItems![index];
-                                    return ListTile(
-                                      title: Text(laundry.name ?? ''),
-                                      subtitle: Text(
-                                          'Price: \$${laundry.pricePerItem ?? 0}'),
-                                      trailing: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          IconButton(
-                                            icon: Icon(Icons.remove),
-                                            onPressed: () {
-                                              if (laundry.quantity! > 0) {
-                                                laundry.quantity =
-                                                    laundry.quantity! - 1;
-                                              }
-                                             pickupPro.notifyListeners();
-                                            },
-                                          ),
-                                          Text(laundry.quantity.toString()),
-                                          IconButton(
-                                            icon: Icon(Icons.add),
-                                            onPressed: () {
-                                              laundry.quantity =
-                                                  laundry.quantity! + 1;
-                                              pickupPro.notifyListeners();
-                                            },
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ],
-                            ),
-                            isExpanded: Provider.of<PickupProvider>(context)
-                                .selectedItems
-                                .contains(item),
-                          );
-                        }).toList(),
-                      ),
-                      SizedBox(height: 16.0),
-                      CustomButton(
-                        label: 'Book Order',
-                        onPressed: () async {
-                          await pickupPro.sendBookingOrder();
-                        },
-                      ),
-                      Text('Total Price: \$${pickupPro.getTotalPrice()}')
-                    ],
-                  ),
+    return Consumer<PickupProvider>(
+      builder: (context,pickup,child) {
+        return SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                onPressed: () {
+                  Get.back();
+                },
+                icon: Icon(
+                  Icons.arrow_back_ios_new_outlined,
+                  color: whiteColor,size: 15,
                 ),
-              );
-            }
-          },
-        ),
-      ),
+              ),
+              centerTitle: true,
+              backgroundColor: secondaryColor,
+              title: Text(
+                'Laundry Selection',
+                style: TextStyle(
+                  color: whiteColor,
+                ),
+              ),
+            ),
+            body:SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+
+                    pickup.getAllItemsResponse !=null
+                    ?
+
+                    ExpansionPanelList(
+                      elevation: 1,
+                      expandedHeaderPadding: EdgeInsets.all(0),
+                      expansionCallback: (int index, bool isExpanded) {
+                        final item = pickup.getAllItemsResponse!.data![index];
+                        Provider.of<PickupProvider>(context, listen: false)
+                            .toggleItemSelection(item);
+                      },
+                      children:
+                      pickup.getAllItemsResponse!.data!.map<ExpansionPanel>((Datum item) {
+                        return ExpansionPanel(
+                          headerBuilder:
+                              (BuildContext context, bool isExpanded) {
+                            return ListTile(
+                              title: Text(item.name ?? ''),
+                            );
+                          },
+                          body: Column(
+                            children: [
+                              ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: item.laundryItems?.length ?? 0,
+                                itemBuilder: (context, index) {
+                                  final laundry = item.laundryItems![index];
+                                  return ListTile(
+                                    title: Text(laundry.name ?? ''),
+                                    subtitle: Text(
+                                        'Price: \$${laundry.pricePerItem ?? 0}'),
+                                    trailing: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        IconButton(
+                                          icon: Icon(Icons.remove),
+                                          onPressed: () {
+                                            if (laundry.quantity! > 0) {
+                                              laundry.quantity =
+                                                  laundry.quantity! - 1;
+                                            }
+                                            pickupPro.notifyListeners();
+                                          },
+                                        ),
+                                        Text(laundry.quantity.toString()),
+                                        IconButton(
+                                          icon: Icon(Icons.add),
+                                          onPressed: () {
+                                            laundry.quantity =
+                                                laundry.quantity! + 1;
+                                            pickupPro.notifyListeners();
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                          isExpanded: pickup
+                              .selectedItems
+                              .contains(item),
+                        );
+                      }).toList(),
+                    )
+                    :
+                    Center(child: CircularProgressIndicator(color: secondaryColor,),)
+                    ,
+                    SizedBox(height: 16.0),
+                    CustomButton(
+                      label: 'Book Order',
+                      onPressed: () async {
+                        await pickupPro.checkValidationForbooking();
+                      },
+                    ),
+                    Text('Total Price: \$${pickupPro.getTotalPrice()}')
+                  ],
+                ),
+              ),
+            )
+            // FutureBuilder<GetAllItemsResponse>(
+            //   future: futureItems,
+            //   builder: (context, snapshot) {
+            //     if (snapshot.connectionState == ConnectionState.waiting) {
+            //       return Center(child: CircularProgressIndicator());
+            //     } else if (snapshot.hasError) {
+            //       return Center(child: Text('Error: ${snapshot.error}'));
+            //     } else if (!snapshot.hasData || snapshot.data?.data == null) {
+            //       return Center(child: Text('No data available'));
+            //     } else {
+            //       List<Datum> allLaundryItems = snapshot.data!.data!;
+            //
+            //       return SingleChildScrollView(
+            //         child: Container(
+            //           padding: EdgeInsets.all(16.0),
+            //           child: Column(
+            //             children: [
+            //               ExpansionPanelList(
+            //                 elevation: 1,
+            //                 expandedHeaderPadding: EdgeInsets.all(0),
+            //                 expansionCallback: (int index, bool isExpanded) {
+            //                   final item = allLaundryItems[index];
+            //                   Provider.of<PickupProvider>(context, listen: false)
+            //                       .toggleItemSelection(item);
+            //                 },
+            //                 children:
+            //                     allLaundryItems.map<ExpansionPanel>((Datum item) {
+            //                   return ExpansionPanel(
+            //                     headerBuilder:
+            //                         (BuildContext context, bool isExpanded) {
+            //                       return ListTile(
+            //                         title: Text(item.name ?? ''),
+            //                       );
+            //                     },
+            //                     body: Column(
+            //                       children: [
+            //                         ListView.builder(
+            //                           shrinkWrap: true,
+            //                           itemCount: item.laundryItems?.length ?? 0,
+            //                           itemBuilder: (context, index) {
+            //                             final laundry = item.laundryItems![index];
+            //                             return ListTile(
+            //                               title: Text(laundry.name ?? ''),
+            //                               subtitle: Text(
+            //                                   'Price: \$${laundry.pricePerItem ?? 0}'),
+            //                               trailing: Row(
+            //                                 mainAxisSize: MainAxisSize.min,
+            //                                 children: [
+            //                                   IconButton(
+            //                                     icon: Icon(Icons.remove),
+            //                                     onPressed: () {
+            //                                       if (laundry.quantity! > 0) {
+            //                                         laundry.quantity =
+            //                                             laundry.quantity! - 1;
+            //                                       }
+            //                                      pickupPro.notifyListeners();
+            //                                     },
+            //                                   ),
+            //                                   Text(laundry.quantity.toString()),
+            //                                   IconButton(
+            //                                     icon: Icon(Icons.add),
+            //                                     onPressed: () {
+            //                                       laundry.quantity =
+            //                                           laundry.quantity! + 1;
+            //                                       pickupPro.notifyListeners();
+            //                                     },
+            //                                   ),
+            //                                 ],
+            //                               ),
+            //                             );
+            //                           },
+            //                         ),
+            //                       ],
+            //                     ),
+            //                     isExpanded: Provider.of<PickupProvider>(context)
+            //                         .selectedItems
+            //                         .contains(item),
+            //                   );
+            //                 }).toList(),
+            //               ),
+            //               SizedBox(height: 16.0),
+            //               CustomButton(
+            //                 label: 'Book Order',
+            //                 onPressed: () async {
+            //                   await pickupPro.sendBookingOrder();
+            //                 },
+            //               ),
+            //               Text('Total Price: \$${pickupPro.getTotalPrice()}')
+            //             ],
+            //           ),
+            //         ),
+            //       );
+            //     }
+            //   },
+            // ),
+          ),
+        );
+      }
     );
   }
 }

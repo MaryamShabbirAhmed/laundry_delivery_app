@@ -68,12 +68,12 @@ class PickupProvider extends ChangeNotifier {
       'mobileNumber': userPhoneNumberController.text
     };
     String response = await ApiServices.postMethod(fields, getUserByNumberURL);
-
+    stopProgress();
     if (response.isEmpty) {
       return false;
     }
     userLoginResponse = userLoginResponseFromJson(response);
-    stopProgress();
+
     customerAvailableData();
     Get.to(PickupClothScreen(
       userLoginResponse: userLoginResponse,
@@ -117,29 +117,23 @@ class PickupProvider extends ChangeNotifier {
   }
 
   ///
-  GetAllItemsResponse? getAllItemsResponse;
-    Future<GetAllItemsResponse> getAllItems() async {
-      
-      
+  GetAllItemsResponse getAllItemsResponse=GetAllItemsResponse();
+    Future<bool> getAllItems() async {
        String response=await ApiServices.getMethod(getAllItemsURL);
-
-
        if(response.isEmpty)
          {
-           throw Exception('Failed to load items');
+          return false;
          }
-
        getAllItemsResponse=getAllItemsResponseFromJson(response);
-
+       AllItemsList=getAllItemsResponse.data!;
        notifyListeners();
-
-       return getAllItemsResponseFromJson(response);
-      
+       return true;
      }
 
 
 
   List<Datum> selectedItems = [];
+  List<Datum> selectedItemsList = [];
 
   void toggleItemSelection(Datum item) {
   if (selectedItems.contains(item)) {
@@ -150,29 +144,61 @@ class PickupProvider extends ChangeNotifier {
   notifyListeners();
   }
 
+  List<Datum> AllItemsList = [];
 
   int getTotalPrice() {
+    selectedItemsList = [];
     int totalPrice = 0;
-    for (final item in selectedItems) {
+    for(Datum data in AllItemsList){
+      for(final item in data.laundryItems??[]){
+        if(item.quantity>0)
+        {
+          // logger.e("${item.pricePerItem} ${item.quantity} $totalPrice");
+        selectedItemsList.add(item);
+        }
 
-      logger.e(item.quantity);
 
-      totalPrice += (item.pricePerItem ?? 0) * (item.quantity ?? 0);
-      for (final laundry in item.laundryItems ?? []) {
-        logger.e(laundry.quantity);
-        print(laundry.quantity);
+        totalPrice += (int.parse(item.pricePerItem.toString()) ?? 0) * (int.parse(item.quantity.toString()) ?? 0);
 
-        totalPrice += (int.parse(laundry.pricePerItem.toString()) ?? 0) * (int.parse(laundry.quantity.toString()) ?? 0);
+
       }
     }
     // notifyListeners();
 
     return totalPrice;
   }
+///
+
+Future<bool> checkValidationForbooking() async {
+if( pickupBookingDateController.text.isEmpty
+    ||  pickupBookingTimeController.text.isEmpty
+    ||  pickupDeliveryDateController.text.isEmpty
+    ||  pickupDeliveryTimeController.text.isEmpty
+    ||  pickupLocationController.text.isEmpty
+    || userID ==null
+   || selectedItemsList==[]
+)
+    {
+      errorSnackBar('Error', 'Something is missing');
+      print(pickupBookingDateController.text);
+      print(pickupBookingTimeController.text);
+      print(pickupDeliveryDateController.text);
+      print(pickupDeliveryTimeController.text);
+      print(pickupLocationController.text);
+      print(userID);
+      print(pickupBookingDateController.text);
+      print(selectedItemsList);
+      return false;
+    }
+
+return await sendBookingOrder();
+}
+
 
   ///
   Future<bool> sendBookingOrder() async {
-
+    startProgress();
+    getTotalPrice();
 
     // Construct the order data using the selected items and quantities
     dynamic bookingOrder = {
@@ -183,42 +209,29 @@ class PickupProvider extends ChangeNotifier {
       "pickUpLatLng": "pickUpLatLng",
       "pickUpAddress": pickupLocationController.text+pickupLocationController2.text,
       "userId": userID??'',
-      "totalPrice": getTotalPrice().toString(),
+      "totalPrice": getTotalPrice(),
       "createdBy": StorageCRUD.getUser().data!.id.toString(),
-      "items":selectedItems
-          .map((item)  {
-          final List<Map<String, dynamic>> laundryItems = [];
-    for (final laundry in item.laundryItems ?? []) {
-    laundryItems.add({
-
-        "pricePerItem": laundry.pricePerItem,
-        "itemName": laundry.name,
-        "laundryItemId": laundry.id,
-        "quantity": laundry.quantity.toString(),
-        "subPrice": (laundry.pricePerItem ?? 0) * int.parse(laundry.quantity.toString()),
-      });
-     }
-    return {
-    "pricePerItem": item.pricePerItem,
-    "itemName": item.name,
-    "laundryItemId": item.id,
-    "quantity": item.quantity.toString(),
-    "subPrice": (item.pricePerItem ?? 0) * (item.quantity ?? 0),
-    "laundryItems": laundryItems,
-    };
-      }).toList(),
+      "items": selectedItemsList
+          .map((item) => {
+        "pricePerItem": item.pricePerItem,
+        "itemName": item.name,
+        "laundryItemId": item.id,
+        "quantity": item.quantity.toString(),
+        "subPrice": ((item.pricePerItem ?? 0) * (item.quantity ?? 0)).toString(),
+      })
+          .toList(),
     };
 
-    logger.i(bookingOrder);
 
-//     String response=await ApiServices.postMethod(bookingOrder, bookOrderURL);
-//     if(response.isEmpty)
-//       {
-//         return false;
-//       }
-// logger.i(boodOrderResponseFromJson(response).toString());
+    String response=await ApiServices.postMethod(bookingOrder, bookOrderURL);
+    stopProgress();
+    if(response.isEmpty)
+      {
+        return false;
+      }
+    successSnackBar('Done', boodOrderResponseFromJson(response).message.toString());
 
-
+    disposePickup();
     return true;
 
   }

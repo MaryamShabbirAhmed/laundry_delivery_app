@@ -32,7 +32,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   int index = 0;
   List<NavigationModel> icons = [
-    NavigationModel(  icon: Image.asset( 'assets/dashboard_images/home.png',
+    NavigationModel(  icon:  Icon(Icons.home_outlined,
     )),
     NavigationModel(icon: Icon(Icons.history)),
     NavigationModel(icon:Icon(Icons.qr_code_scanner)),

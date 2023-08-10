@@ -30,7 +30,7 @@ class _SearchCustomerState extends State<SearchCustomer> {
               backgroundColor: secondaryColor,
               title: Text('Search Customer', style: TextStyle(color: whiteColor),),
               centerTitle: true,
-              leading: IconButton( onPressed: () {  Get.back();}, icon: Icon(Icons.arrow_back_ios, color: whiteColor,),),
+              leading: IconButton( onPressed: () {  Get.back();}, icon: Icon(Icons.arrow_back_ios, color: whiteColor, size: 15),),
 
             ),
             body: Column(

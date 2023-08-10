@@ -36,12 +36,12 @@ void initState(){
             centerTitle: true,
             title: Text('Customer History', style: TextStyle(color: whiteColor),),
             backgroundColor: secondaryColor,
-            leading: IconButton(
-              onPressed: () {
-                Get.back();
-              },
-              icon:  Icon(Icons.arrow_back_ios, color: whiteColor, size: 15),
-            ),
+            // leading: IconButton(
+            //   onPressed: () {
+            //     Get.back();
+            //   },
+            //   icon:  Icon(Icons.arrow_back_ios, color: whiteColor, size: 15),
+            // ),
           ),
           body: SingleChildScrollView(
             child: Column(

@@ -39,7 +39,7 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
           onPressed: () {
             Get.back();
           },
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white, size: 20),
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white, size: 15),
         ),
       ),
       body: SingleChildScrollView(
@@ -112,13 +112,13 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
             // ),
             InputFieldCustom(
               readOnly: true,
-              controller: pickupPro.pickupDeliveryDateController,
+              controller: pickupPro.pickupBookingDateController,
               label: 'Booking Date',
               hint: 'Select Date',
               suffix: IconButton(
                   onPressed: () async {
                     await pickupPro.selectDate(context);
-                    pickupPro.pickupDeliveryDateController.text =
+                    pickupPro.pickupBookingDateController.text =
                     "${pickupPro.selectedDate.toLocal()}".split(' ')[0];
                     setState(() {});
                   },
