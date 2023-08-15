@@ -30,7 +30,7 @@ final ValueChanged? onChange;
 
 
   InputFieldCustom(
-  {required this.label,
+  { this.label,
   this.controller,
     this.decoration,
   this.hintColor,

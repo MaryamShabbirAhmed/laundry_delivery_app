@@ -3,6 +3,7 @@
 String baseURL="https://laundry.bhumanit.com/api";
 String loginURL="/user/loginDriver";
 String signupURL="/user/createUser";
+String updateUserURL="/user/updateUserProfile";
 String getUserByNumberURL="/user/getUserByMobile";
 String getAllItemsURL="/laundry/getAllLaundryMenus";
 String bookOrderURL="/booking/bookOrder";

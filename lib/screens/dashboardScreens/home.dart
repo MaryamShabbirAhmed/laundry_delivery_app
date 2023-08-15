@@ -1,35 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:laundry_delivery/providers/historyDataProvider.dart';
-import 'package:laundry_delivery/screens/pickupScreens/pickupCloth.dart';
 import 'package:laundry_delivery/utils/colors.dart';
 import 'package:laundry_delivery/utils/userStorage.dart';
 import 'package:provider/provider.dart';
-
-import '../../responses/getAllOrdersById.dart';
 import '../../utils/providerVeriables.dart';
 import '../customerScreens/search customer.dart';
-
+import '../profileScreens/myProfile.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
 class _HomeScreenState extends State<HomeScreen> {
-  // late Future<GetAllOrdersByIdResponse> getHistory;
   @override
   void initState(){
-
     super.initState();
     StorageCRUD.getUser();
-    // getHistory=historyPro.getOrderHistory();
     historyPro.getDashboardDetail();
-
   }
-
-
   @override
   Widget build(BuildContext context) {
     return Consumer<HistoryProvider>(
@@ -53,14 +42,21 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              height: 45,
-                              width: 45,
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.white, width: 2),
-                                borderRadius: BorderRadius.circular(100),
-                                image: DecorationImage(
-                                    image: AssetImage('assets/images/profile.jpg')),
+                            InkWell(
+                              onTap: (){
+
+                                Get.to(MyProfieScreen());
+
+                              },
+                              child: Container(
+                                height: 45,
+                                width: 45,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.white, width: 2),
+                                  borderRadius: BorderRadius.circular(100),
+                                  image: DecorationImage(
+                                      image: AssetImage('assets/images/profile.jpg')),
+                                ),
                               ),
                             ),
                             Row(

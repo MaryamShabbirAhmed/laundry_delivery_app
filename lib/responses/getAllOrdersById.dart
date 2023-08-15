@@ -143,7 +143,7 @@ class OrderDetail {
     id: json["id"],
     pricePerItem: json["pricePerItem"],
     quantity: json["quantity"],
-    itemName: itemNameValues.map[json["itemName"]]!,
+    itemName: itemNameValues.map[json["itemName"]] ?? null,
     subPrice: json["subPrice"],
     createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
     updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),

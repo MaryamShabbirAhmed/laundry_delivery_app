@@ -39,7 +39,9 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 30,
             ),
-            InputFieldCustom(
+            InputFieldCustom
+              (
+              borderColor: secondaryColor,
               label: 'Enter Your Email',
               controller: authPro.emailController,
               decoration: authPro.buildInputDecoration('Enter your email'),
@@ -69,6 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
             CustomButton(
+
               label: 'Login',
               onPressed: () async {
                 bool isValid = await authPro.checkLoginValidation();

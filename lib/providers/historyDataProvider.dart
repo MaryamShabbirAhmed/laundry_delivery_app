@@ -19,7 +19,7 @@ class HistoryProvider extends ChangeNotifier{
 
   Future<bool> getOrderHistory() async {
 
-    String response=await ApiServices.postMethod({'createdBy':'2'},getAllOrderByIdURL );
+    String response=await ApiServices.postMethod({'createdBy':StorageCRUD.getUser().data!.id},getAllOrderByIdURL );
     if(response.isEmpty)
       {
         return false;
@@ -36,7 +36,7 @@ return true;
   Future<bool> getDashboardDetail() async {
 Map<String,dynamic> body={
   "createdBy": StorageCRUD.getUser().data!.id.toString(),
-  "deliveryDate": "2023-08-10",
+  "deliveryDate": DateTime.now().toString(),
   "bookingDate": "2023-08-09",
   "page": 0,
   "limit": 100,

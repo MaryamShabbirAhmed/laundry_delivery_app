@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:laundry_delivery/utils/widgets/snackbars.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../responses/bookingResponse.dart';
 import '../responses/getAllItemsResponse.dart';
@@ -24,39 +25,36 @@ class PickupProvider extends ChangeNotifier {
   TextEditingController pickupBookingDateController = TextEditingController();
   TextEditingController pickupDeliveryTimeController = TextEditingController();
   TextEditingController pickupBookingTimeController = TextEditingController();
+  TextEditingController referenceNoController = TextEditingController();
   DateTime selectedDate = DateTime.now();
   TextEditingController emailController = TextEditingController();
   TextEditingController userPhoneNumberController = TextEditingController();
+  TextEditingController collectedAmountController = TextEditingController();
+  String? selectedMethod;
+  List<Datum> selectedItems = [];
+  List<Datum> selectedItemsList = [];
+  UserLoginResponse? userLoginResponse;
+  String? userID;
+  GetAllItemsResponse getAllItemsResponse=GetAllItemsResponse();
+  List<Datum> AllItemsList = [];
+  BarcodeCapture? barcode;
 
   void disposePickup() {
     pickupLocationController.clear();
     pickupLocationController2.clear();
     pickupDeliveryTimeController.clear();
+    pickupBookingTimeController.clear();
     pickupDeliveryDateController.clear();
+    pickupBookingDateController.clear();
     pickupContactController.clear();
     pickupCustomerNameController.clear();
     pickupPacketController.clear();
     pickupRemarksController.clear();
+    referenceNoController.clear();
+    collectedAmountController.text='0';
     selectedDate = DateTime.now();
+    selectedMethod=null;
   }
-
-  Future<void> pickupInputValidation() async {
-    if (pickupLocationController.text.isEmpty ||
-        pickupDeliveryDateController.text.isEmpty ||
-        pickupDeliveryTimeController.text.isEmpty ||
-        pickupLocationController2.text.isEmpty ||
-        pickupRemarksController.text.isEmpty ||
-        pickupPacketController.text.isEmpty ||
-        pickupCustomerNameController.text.isEmpty ||
-        pickupContactController.text.isEmpty) {
-      await errorSnackBar('error', 'fields are empty');
-    } else {
-      await successSnackBar('success', 'successfully submitted');
-    }
-  }
-
-  UserLoginResponse? userLoginResponse;
-  String? userID;
     void customerAvailableData(){
       pickupCustomerNameController.text=userLoginResponse!.data!.name.toString()??'';
       pickupContactController.text=userLoginResponse!.data!.mobileNumber.toString()??'';
@@ -81,7 +79,6 @@ class PickupProvider extends ChangeNotifier {
     notifyListeners();
     return true;
   }
-
   Future<void> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
@@ -94,7 +91,6 @@ class PickupProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
-
   Future<void> getTime(var context, TextEditingController dateSelect) async {
     TimeOfDay? pickedTime = await showTimePicker(
       initialTime: TimeOfDay.now(),
@@ -115,9 +111,7 @@ class PickupProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
-
   ///
-  GetAllItemsResponse getAllItemsResponse=GetAllItemsResponse();
     Future<bool> getAllItems() async {
        String response=await ApiServices.getMethod(getAllItemsURL);
        if(response.isEmpty)
@@ -129,12 +123,6 @@ class PickupProvider extends ChangeNotifier {
        notifyListeners();
        return true;
      }
-
-
-
-  List<Datum> selectedItems = [];
-  List<Datum> selectedItemsList = [];
-
   void toggleItemSelection(Datum item) {
   if (selectedItems.contains(item)) {
   selectedItems.remove(item);
@@ -143,9 +131,6 @@ class PickupProvider extends ChangeNotifier {
   }
   notifyListeners();
   }
-
-  List<Datum> AllItemsList = [];
-
   int getTotalPrice() {
     selectedItemsList = [];
     int totalPrice = 0;
@@ -168,33 +153,24 @@ class PickupProvider extends ChangeNotifier {
     return totalPrice;
   }
 ///
-
 Future<bool> checkValidationForbooking() async {
 if( pickupBookingDateController.text.isEmpty
     ||  pickupBookingTimeController.text.isEmpty
     ||  pickupDeliveryDateController.text.isEmpty
     ||  pickupDeliveryTimeController.text.isEmpty
+    ||  referenceNoController.text.isEmpty
     ||  pickupLocationController.text.isEmpty
     || userID ==null
+|| collectedAmountController.text.isEmpty
+|| selectedMethod==null
    || selectedItemsList==[]
 )
     {
       errorSnackBar('Error', 'Something is missing');
-      print(pickupBookingDateController.text);
-      print(pickupBookingTimeController.text);
-      print(pickupDeliveryDateController.text);
-      print(pickupDeliveryTimeController.text);
-      print(pickupLocationController.text);
-      print(userID);
-      print(pickupBookingDateController.text);
-      print(selectedItemsList);
       return false;
     }
-
 return await sendBookingOrder();
 }
-
-
   ///
   Future<bool> sendBookingOrder() async {
     startProgress();
@@ -206,8 +182,11 @@ return await sendBookingOrder();
       "bookingTime": pickupBookingTimeController.text,
       "deliveryDate": pickupDeliveryDateController.text,
       "deliveryTime": pickupDeliveryTimeController.text,
+      "referenceId": referenceNoController.text,
       "pickUpLatLng": "pickUpLatLng",
       "pickUpAddress": pickupLocationController.text+pickupLocationController2.text,
+      "collectedPayment":"0",
+      "selectedPaymentType":selectedMethod,
       "userId": userID??'',
       "totalPrice": getTotalPrice(),
       "createdBy": StorageCRUD.getUser().data!.id.toString(),
@@ -229,9 +208,9 @@ return await sendBookingOrder();
       {
         return false;
       }
-    successSnackBar('Done', boodOrderResponseFromJson(response).message.toString());
+    await successSnackBar('Done', boodOrderResponseFromJson(response).message.toString());
+    // disposePickup();
 
-    disposePickup();
     return true;
 
   }

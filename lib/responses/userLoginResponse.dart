@@ -40,6 +40,8 @@ class Data {
   int? id;
   String? name;
   String? mobileNumber;
+  dynamic emiratesIdNo;
+  dynamic dob;
   String? loginId;
   String? profileImage;
   bool? isActive;
@@ -51,6 +53,8 @@ class Data {
     this.id,
     this.name,
     this.mobileNumber,
+    this.emiratesIdNo,
+    this.dob,
     this.loginId,
     this.profileImage,
     this.isActive,
@@ -63,8 +67,10 @@ class Data {
     id: json["id"],
     name: json["name"],
     mobileNumber: json["mobileNumber"],
+    emiratesIdNo: json["emiratesIdNo"],
+    dob: json["dob"],
     loginId: json["loginId"],
-    profileImage: json["profileImage"]?? '',
+    profileImage: json["profileImage"],
     isActive: json["isActive"],
     userType: json["userType"],
     createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
@@ -75,6 +81,8 @@ class Data {
     "id": id,
     "name": name,
     "mobileNumber": mobileNumber,
+    "emiratesIdNo": emiratesIdNo,
+    "dob": dob,
     "loginId": loginId,
     "profileImage": profileImage,
     "isActive": isActive,

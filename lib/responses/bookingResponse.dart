@@ -61,14 +61,16 @@ class Data {
 }
 
 class Body {
-  String? bookingDate;
+  DateTime? bookingDate;
   String? bookingTime;
-  String? deliveryDate;
+  DateTime? deliveryDate;
   String? deliveryTime;
   String? pickUpLatLng;
   String? pickUpAddress;
   String? userId;
   int? totalPrice;
+  String? collectedPayment;
+  String? selectedPaymentType;
   String? createdBy;
   List<Item>? items;
 
@@ -81,32 +83,38 @@ class Body {
     this.pickUpAddress,
     this.userId,
     this.totalPrice,
+    this.collectedPayment,
+    this.selectedPaymentType,
     this.createdBy,
     this.items,
   });
 
   factory Body.fromJson(Map<String, dynamic> json) => Body(
-    bookingDate: json["bookingDate"],
+    bookingDate: json["bookingDate"] == null ? null : DateTime.parse(json["bookingDate"]),
     bookingTime: json["bookingTime"],
-    deliveryDate: json["deliveryDate"],
+    deliveryDate: json["deliveryDate"] == null ? null : DateTime.parse(json["deliveryDate"]),
     deliveryTime: json["deliveryTime"],
     pickUpLatLng: json["pickUpLatLng"],
     pickUpAddress: json["pickUpAddress"],
     userId: json["userId"],
     totalPrice: json["totalPrice"],
+    collectedPayment: json["collectedPayment"],
+    selectedPaymentType: json["selectedPaymentType"],
     createdBy: json["createdBy"],
     items: json["items"] == null ? [] : List<Item>.from(json["items"]!.map((x) => Item.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "bookingDate": bookingDate,
+    "bookingDate": "${bookingDate!.year.toString().padLeft(4, '0')}-${bookingDate!.month.toString().padLeft(2, '0')}-${bookingDate!.day.toString().padLeft(2, '0')}",
     "bookingTime": bookingTime,
-    "deliveryDate": deliveryDate,
+    "deliveryDate": "${deliveryDate!.year.toString().padLeft(4, '0')}-${deliveryDate!.month.toString().padLeft(2, '0')}-${deliveryDate!.day.toString().padLeft(2, '0')}",
     "deliveryTime": deliveryTime,
     "pickUpLatLng": pickUpLatLng,
     "pickUpAddress": pickUpAddress,
     "userId": userId,
     "totalPrice": totalPrice,
+    "collectedPayment": collectedPayment,
+    "selectedPaymentType": selectedPaymentType,
     "createdBy": createdBy,
     "items": items == null ? [] : List<dynamic>.from(items!.map((x) => x.toJson())),
   };
@@ -151,25 +159,25 @@ class Item {
 class Order {
   String? paymentStatus;
   bool? isPaid;
-  String? selectedPaymentType;
   String? status;
   int? id;
-  String? bookingDate;
+  DateTime? bookingDate;
   String? bookingTime;
-  dynamic deliveryDate;
+  DateTime? deliveryDate;
   String? deliveryTime;
   String? pickUpLatLng;
   String? pickUpAddress;
   String? userId;
   int? totalPrice;
+  String? collectedPayment;
   String? createdBy;
+  String? selectedPaymentType;
   DateTime? updatedAt;
   DateTime? createdAt;
 
   Order({
     this.paymentStatus,
     this.isPaid,
-    this.selectedPaymentType,
     this.status,
     this.id,
     this.bookingDate,
@@ -180,7 +188,9 @@ class Order {
     this.pickUpAddress,
     this.userId,
     this.totalPrice,
+    this.collectedPayment,
     this.createdBy,
+    this.selectedPaymentType,
     this.updatedAt,
     this.createdAt,
   });
@@ -188,18 +198,19 @@ class Order {
   factory Order.fromJson(Map<String, dynamic> json) => Order(
     paymentStatus: json["paymentStatus"],
     isPaid: json["isPaid"],
-    selectedPaymentType: json["selectedPaymentType"],
     status: json["status"],
     id: json["id"],
-    bookingDate: json["bookingDate"],
+    bookingDate: json["bookingDate"] == null ? null : DateTime.parse(json["bookingDate"]),
     bookingTime: json["bookingTime"],
-    deliveryDate: json["deliveryDate"],
+    deliveryDate: json["deliveryDate"] == null ? null : DateTime.parse(json["deliveryDate"]),
     deliveryTime: json["deliveryTime"],
     pickUpLatLng: json["pickUpLatLng"],
     pickUpAddress: json["pickUpAddress"],
     userId: json["userId"],
     totalPrice: json["totalPrice"],
+    collectedPayment: json["collectedPayment"],
     createdBy: json["createdBy"],
+    selectedPaymentType: json["selectedPaymentType"],
     updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
     createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
   );
@@ -207,18 +218,19 @@ class Order {
   Map<String, dynamic> toJson() => {
     "paymentStatus": paymentStatus,
     "isPaid": isPaid,
-    "selectedPaymentType": selectedPaymentType,
     "status": status,
     "id": id,
-    "bookingDate": bookingDate,
+    "bookingDate": "${bookingDate!.year.toString().padLeft(4, '0')}-${bookingDate!.month.toString().padLeft(2, '0')}-${bookingDate!.day.toString().padLeft(2, '0')}",
     "bookingTime": bookingTime,
-    "deliveryDate": deliveryDate,
+    "deliveryDate": deliveryDate?.toIso8601String(),
     "deliveryTime": deliveryTime,
     "pickUpLatLng": pickUpLatLng,
     "pickUpAddress": pickUpAddress,
     "userId": userId,
     "totalPrice": totalPrice,
+    "collectedPayment": collectedPayment,
     "createdBy": createdBy,
+    "selectedPaymentType": selectedPaymentType,
     "updatedAt": updatedAt?.toIso8601String(),
     "createdAt": createdAt?.toIso8601String(),
   };

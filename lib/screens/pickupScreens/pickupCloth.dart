@@ -9,6 +9,7 @@ import 'package:laundry_delivery/utils/widgets/buttonCustom.dart';
 import 'package:laundry_delivery/utils/widgets/inputFieldCustom.dart';
 import 'package:provider/provider.dart';
 import '../../providers/pickupProvider.dart';
+import '../../utils/widgets/snackbars.dart';
 import 'laundrySelectionScreen.dart';
 
 class PickupClothScreen extends StatefulWidget {
@@ -167,6 +168,7 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
               label: 'Next',
               onPressed: () async {
              await  pickupPro.getAllItems();
+             logger.i(pickupPro.pickupBookingTimeController.text);
                      Get.to(LaundrySelectionScreen());
                 // await pickupPro.pickupInputValidation();
                 // successSnackBar('Success', 'Submitted Successfully', context);

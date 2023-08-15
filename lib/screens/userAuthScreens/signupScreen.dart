@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:laundry_delivery/providers/authProvider.dart';
-import 'package:laundry_delivery/screens/customerScreens/search%20customer.dart';
 import 'package:laundry_delivery/screens/dashboardScreens/dashboard.dart';
 import 'package:laundry_delivery/utils/widgets/buttonCustom.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +9,6 @@ import '../../utils/colors.dart';
 import '../../utils/providerVeriables.dart';
 import '../../utils/widgets/inputFieldCustom.dart';
 import '../../utils/widgets/snackbars.dart';
-import '../pickupScreens/pickupCloth.dart';
 
 class SignupScreen extends StatefulWidget {
   SignupScreen({Key? key}) : super(key: key);
@@ -29,6 +27,8 @@ class _SignupScreenState extends State<SignupScreen> {
             appBar:
             authPro.isDriver?
                 AppBar(
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.transparent,
                   leading: Container(),
                 )
                 :
@@ -44,7 +44,7 @@ class _SignupScreenState extends State<SignupScreen> {
           child: Column(
             children: [
               SizedBox(
-                height: 40,
+                height: 30,
               ),
               authPro.isDriver ?
               Container(
@@ -89,11 +89,32 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
               InputFieldCustom(
                 borderColor: secondaryColor,
+                label: 'Enter Your EMIRATE No',
+                controller: authPro.emirateNoController,
+              ),
+              InputFieldCustom(
+                borderColor: secondaryColor,
 
                 label: 'Enter Your Email',
                 controller: authPro.emailController,
                 decoration: authPro.buildInputDecoration('Enter your email'),
               ),
+              InputFieldCustom(
+                borderColor: secondaryColor,
+                readOnly: true,
+                controller: authData.dobController,
+                label: 'Date of Birth',
+                hint: 'Select Date',
+                suffix: IconButton(
+                    onPressed: () async {
+                      await pickupPro.selectDate(context);
+                      authData.dobController.text =
+                      "${pickupPro.selectedDate.toLocal()}".split(' ')[0];
+                      setState(() {});
+                    },
+                    icon: Icon(Icons.calendar_month, color: borderGreyColor)),
+              ),
+
               if(authPro.isDriver)
               Padding(
                 padding: EdgeInsets.only(left: 8.0, right: 8),
