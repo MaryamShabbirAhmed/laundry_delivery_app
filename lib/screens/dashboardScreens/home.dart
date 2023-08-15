@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             InkWell(
                               onTap: (){
 
-                                Get.to(MyProfieScreen());
+                                Get.to(MyProfileScreen());
 
                               },
                               child: Container(

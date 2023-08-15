@@ -120,13 +120,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:laundry_delivery/providers/pickupProvider.dart';
+import 'package:laundry_delivery/responses/bookingResponse.dart';
+import 'package:laundry_delivery/screens/historyScreens/orderDetails.dart';
 import 'package:laundry_delivery/utils/providerVeriables.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:provider/provider.dart';
 import '../scanner_error_widget.dart';
 import '../utils/colors.dart';
-import '../utils/widgets/snackbars.dart';
-
 
 class ScannerScreen extends StatefulWidget {
   const ScannerScreen({Key? key}) : super(key: key);
@@ -137,8 +137,6 @@ class ScannerScreen extends StatefulWidget {
 
 class _ScannerScreenState extends State<ScannerScreen>
     with SingleTickerProviderStateMixin {
-
-
   final MobileScannerController controller = MobileScannerController(
     torchEnabled: true,
   );
@@ -220,7 +218,7 @@ class _ScannerScreenState extends State<ScannerScreen>
         ],
       ),
       body: Consumer<PickupProvider>(
-        builder: (context,e,child) {
+        builder: (context, e, child) {
           return Stack(
             children: [
               Container(
@@ -235,22 +233,43 @@ class _ScannerScreenState extends State<ScannerScreen>
                   onDetect: (barcode) async {
                     // await    successSnackBar('Bar Code found!', barcode.barcodes.first.toString());
                     setState(() {
-
-                      this.barcode=null;
+                      this.barcode = null;
                       this.barcode = barcode;
-                      pickupPro.barcode=null;
-                      pickupPro.barcode=this.barcode;
-                      // controller.stop();
-                      // Get.to(DashboardScreen(index: 2,));
-                      if(pickupPro.barcode!=null)
-                        {
+
+                      if (pickupPro.isCreate) {
+                        pickupPro.barcode = null;
+                        pickupPro.barcode = this.barcode;
+                        // controller.stop();
+                        // Get.to(DashboardScreen(index: 2,));
+                        if (pickupPro.barcode != null) {
+
+
                           controller.stop();
-                          pickupPro.referenceNoController.text=pickupPro.barcode!.barcodes.first.rawValue.toString();
+                          pickupPro.referenceNoController.text = pickupPro
+                              .barcode!.barcodes.first.rawValue
+                              .toString();
+                          pickupPro.isCreate = false;
+                          pickupPro.isGet = false;
+
                           Get.back();
                         }
-
-
+                      }
                     });
+                    if (this.barcode != null && pickupPro.isGet) {
+                      controller.stop();
+                      bool getOrder=await pickupPro.getOrderByRefId(
+                          displayValue: this
+                              .barcode!
+                              .barcodes
+                              .first
+                              .displayValue
+                              .toString());
+                      if(getOrder)
+                        {
+                          Get.to(OrderDetails());
+                        }
+
+                    }
                   },
                 ),
               ),

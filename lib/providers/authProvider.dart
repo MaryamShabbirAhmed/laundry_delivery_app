@@ -157,7 +157,7 @@ bool check=StorageCRUD.box.hasData(StorageKeys.userData);
     userPhoneNumberController.text=StorageCRUD.getUser().data!.mobileNumber.toString();
     userNameController.text=StorageCRUD.getUser().data!.name.toString();
     emailController.text=StorageCRUD.getUser().data!.loginId.toString();
-    dobController.text=StorageCRUD.getUser().data!.dob.toString();
+    dobController.text=StorageCRUD.getUser().data!.dob? StorageCRUD.getUser().data!.dob.toString():'2023-4-7';
     // password.text=StorageCRUD.getUser().data!.pass.toString();
 
 

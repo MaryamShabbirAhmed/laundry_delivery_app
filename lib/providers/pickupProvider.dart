@@ -7,6 +7,8 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../responses/bookingResponse.dart';
 import '../responses/getAllItemsResponse.dart';
+import '../responses/getOrderByRefIdResponse.dart';
+import '../responses/updateResponse.dart';
 import '../responses/userLoginResponse.dart';
 import '../screens/pickupScreens/pickupCloth.dart';
 import '../services/apiServices.dart';
@@ -38,6 +40,8 @@ class PickupProvider extends ChangeNotifier {
   GetAllItemsResponse getAllItemsResponse=GetAllItemsResponse();
   List<Datum> AllItemsList = [];
   BarcodeCapture? barcode;
+  bool isCreate=false;
+  bool  isGet=true;
 
   void disposePickup() {
     pickupLocationController.clear();
@@ -187,7 +191,7 @@ return await sendBookingOrder();
       "pickUpAddress": pickupLocationController.text+pickupLocationController2.text,
       "collectedPayment":"0",
       "selectedPaymentType":selectedMethod,
-      "userId": userID??'',
+      "userId": userID.toString()??'',
       "totalPrice": getTotalPrice(),
       "createdBy": StorageCRUD.getUser().data!.id.toString(),
       "items": selectedItemsList
@@ -208,12 +212,104 @@ return await sendBookingOrder();
       {
         return false;
       }
-    await successSnackBar('Done', boodOrderResponseFromJson(response).message.toString());
-    // disposePickup();
+    await successSnackBar('Done', 'Order Created');
+    disposePickup();
 
     return true;
 
   }
-  
-  
+
+  GetOrderByRefIdResponse? getOrderByRefIdResponse;
+  OrderData? data;
+Future<bool> getOrderByRefId({String? displayValue})async{
+
+
+    String response=await ApiServices.getMethod(getOrderByRefIdURL+'?referenceId=${displayValue}');
+
+    if(response.isEmpty)
+      {
+        return false;
+      }
+    getOrderByRefIdResponse=getOrderByRefIdResponseFromJson(response);
+
+    logger.i(getOrderByRefIdResponse!.data.toString());
+
+
+if(getOrderByRefIdResponse!.data==null)
+  {
+    errorSnackBar('Error', 'No Data Found!');
+    return false;
+  }
+    data= getOrderByRefIdResponse!.data;
+notifyListeners();
+    return true;
+}
+///
+
+
+
+  String orderStatus = "";
+  String paymentStatus = "";
+  String paymentType = "";
+  String payment = "";
+
+
+
+  UpdateOrderResponse? updateOrderResponse;
+Future<bool> updateOrder()async{
+  bool isPaid=false;
+  if(int.parse(data!.totalPrice.toString())<=int.parse(payment) && data!.isPaid!=true)
+    {
+      isPaid=true;
+    }
+if(orderStatus=='Delivered')
+  {
+    if(!isPaid)
+      {
+        errorSnackBar('Error', 'Payment is not collected ');
+        return false;
+      }
+  }
+
+  startProgress();
+  Map<String,dynamic> body={
+    "id":data!.id.toString(),
+    "status":orderStatus,
+    "isPaid":isPaid,
+    "paymentStatus":paymentStatus,
+    "collectedPayment":payment,
+    "selectedPaymentType":paymentType,
+    "userId":data!.userId.toString()
+
+  };
+  String response = await ApiServices.postMethod(body,updateOrderUrl);
+stopProgress();
+
+  if(response.isEmpty)
+  {
+    return false;
+  }
+  updateOrderResponse=updateOrderResponseFromJson(response);
+logger.i(updateOrderResponse!.data!.isPaid);
+logger.i(updateOrderResponse!.message);
+
+
+return true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

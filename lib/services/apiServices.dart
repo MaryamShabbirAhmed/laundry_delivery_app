@@ -52,14 +52,5 @@ class ApiServices {
        }
   }
 
- // static Future<GetAllItemsResponse> fetchAllItems() async {
- //   // Fetch your data here from the server
- //   final response = await http.get(Uri.parse(baseURL+getAllItemsURL));
- //   if (response.statusCode == 200) {
- //     final Map<String, dynamic> responseData = json.decode(response.body);
- //     return GetAllItemsResponse.fromJson(responseData);
- //   } else {
- //     throw Exception('Failed to load items');
- //   }
- // }
+
 }

@@ -38,17 +38,19 @@ class GetAllOrdersByIdResponse {
 
 class Datum {
   int? id;
-  String? bookingDate;
+  DateTime? bookingDate;
   String? bookingTime;
-  String? deliveryDate;
+  DateTime? deliveryDate;
   String? deliveryTime;
   String? pickUpLatLng;
   String? pickUpAddress;
   String? totalPrice;
+  String? collectedPayment;
   String? paymentStatus;
   bool? isPaid;
   String? selectedPaymentType;
   String? status;
+  String? referenceId;
   DateTime? createdAt;
   DateTime? updatedAt;
   int? userId;
@@ -64,10 +66,12 @@ class Datum {
     this.pickUpLatLng,
     this.pickUpAddress,
     this.totalPrice,
+    this.collectedPayment,
     this.paymentStatus,
     this.isPaid,
     this.selectedPaymentType,
     this.status,
+    this.referenceId,
     this.createdAt,
     this.updatedAt,
     this.userId,
@@ -77,17 +81,19 @@ class Datum {
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
     id: json["id"],
-    bookingDate: json["bookingDate"],
+    bookingDate: json["bookingDate"] == null ? null : DateTime.parse(json["bookingDate"]),
     bookingTime: json["bookingTime"],
-    deliveryDate: json["deliveryDate"],
+    deliveryDate: json["deliveryDate"] == null ? null : DateTime.parse(json["deliveryDate"]),
     deliveryTime: json["deliveryTime"],
     pickUpLatLng: json["pickUpLatLng"],
     pickUpAddress: json["pickUpAddress"],
     totalPrice: json["totalPrice"],
+    collectedPayment: json["collectedPayment"],
     paymentStatus: json["paymentStatus"],
     isPaid: json["isPaid"],
     selectedPaymentType: json["selectedPaymentType"],
     status: json["status"],
+    referenceId: json["referenceId"],
     createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
     updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
     userId: json["userId"],
@@ -97,17 +103,19 @@ class Datum {
 
   Map<String, dynamic> toJson() => {
     "id": id,
-    "bookingDate": bookingDate,
+    "bookingDate": "${bookingDate!.year.toString().padLeft(4, '0')}-${bookingDate!.month.toString().padLeft(2, '0')}-${bookingDate!.day.toString().padLeft(2, '0')}",
     "bookingTime": bookingTime,
-    "deliveryDate": deliveryDate,
+    "deliveryDate": deliveryDate?.toIso8601String(),
     "deliveryTime": deliveryTime,
     "pickUpLatLng": pickUpLatLng,
     "pickUpAddress": pickUpAddress,
     "totalPrice": totalPrice,
+    "collectedPayment": collectedPayment,
     "paymentStatus": paymentStatus,
     "isPaid": isPaid,
     "selectedPaymentType": selectedPaymentType,
     "status": status,
+    "referenceId": referenceId,
     "createdAt": createdAt?.toIso8601String(),
     "updatedAt": updatedAt?.toIso8601String(),
     "userId": userId,
@@ -120,7 +128,7 @@ class OrderDetail {
   int? id;
   String? pricePerItem;
   String? quantity;
-  ItemName? itemName;
+  String? itemName;
   String? subPrice;
   DateTime? createdAt;
   DateTime? updatedAt;
@@ -143,7 +151,7 @@ class OrderDetail {
     id: json["id"],
     pricePerItem: json["pricePerItem"],
     quantity: json["quantity"],
-    itemName: itemNameValues.map[json["itemName"]] ?? null,
+    itemName: json["itemName"],
     subPrice: json["subPrice"],
     createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
     updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
@@ -155,31 +163,11 @@ class OrderDetail {
     "id": id,
     "pricePerItem": pricePerItem,
     "quantity": quantity,
-    "itemName": itemNameValues.reverse[itemName],
+    "itemName": itemName,
     "subPrice": subPrice,
     "createdAt": createdAt?.toIso8601String(),
     "updatedAt": updatedAt?.toIso8601String(),
     "orderId": orderId,
     "laundryItemId": laundryItemId,
   };
-}
-
-enum ItemName {
-  ITEM_NAME
-}
-
-final itemNameValues = EnumValues({
-  "itemName": ItemName.ITEM_NAME
-});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
 }

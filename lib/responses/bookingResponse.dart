@@ -167,8 +167,8 @@ class Order {
   String? deliveryTime;
   String? pickUpLatLng;
   String? pickUpAddress;
-  String? userId;
-  int? totalPrice;
+  int? userId;
+  String? totalPrice;
   String? collectedPayment;
   String? createdBy;
   String? selectedPaymentType;

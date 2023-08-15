@@ -84,18 +84,18 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
               InputFieldCustom(
                 borderColor: secondaryColor,
-                label: 'Enter Your Name',
+                label:  authPro.isDriver? 'Enter Your Name': 'Enter Customer Name',
                 controller: authPro.userNameController,
               ),
               InputFieldCustom(
                 borderColor: secondaryColor,
-                label: 'Enter Your EMIRATE No',
+                label:  authPro.isDriver?'Enter Your EMIRATE No':'Enter Customer EMIRATE No',
                 controller: authPro.emirateNoController,
               ),
               InputFieldCustom(
                 borderColor: secondaryColor,
 
-                label: 'Enter Your Email',
+                label:  authPro.isDriver?'Enter Your Email':'Enter Customer Email',
                 controller: authPro.emailController,
                 decoration: authPro.buildInputDecoration('Enter your email'),
               ),

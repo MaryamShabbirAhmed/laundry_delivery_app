@@ -103,22 +103,7 @@ void initState(){
                         return InkWell(
                           onTap: () {
                             selectedIndex = index;
-                           if (index == 1) {
-                              historyType = 'pending';
-
-                            } else if (index == 2) {
-                              historyType = 'Due';
-
-                            } else if (index == 3) {
-                              historyType = 'process';
-
-                            }
-                            else
-                              {
-                                historyType = historyTypeList[index];
-
-                              }
-
+                            historyType = historyTypeList[index];
                             setState(() {});
                           },
                           child: Padding(
@@ -161,13 +146,21 @@ void initState(){
                         {
                           historyColor=orangeLightColor;
                         }
-                        else if(histryPro.getAllOrdersByIdResponse!.data![index].status=='Due')
+                        else if(histryPro.getAllOrdersByIdResponse!.data![index].status=='rejected')
                         {
                           historyColor=redColor;
                         }
-                        else if(histryPro.getAllOrdersByIdResponse!.data![index].status=='process')
+                        else if(histryPro.getAllOrdersByIdResponse!.data![index].status=='on the way')
                         {
                           historyColor=yellowColor;
+                        }
+                        else if(histryPro.getAllOrdersByIdResponse!.data![index].status=='delivered')
+                        {
+                          historyColor=greenishColor;
+                        }
+                        else if(histryPro.getAllOrdersByIdResponse!.data![index].status=='picked from shop')
+                        {
+                          historyColor=orangeLightColor;
                         }
                         return
                           historyType == 'Order History'
@@ -205,12 +198,12 @@ void initState(){
                                               title: 'Order No',
                                               info:  histryPro.getAllOrdersByIdResponse!.data![index].id.toString()),
                                           ListViewInfoWidget(
-                                              title: 'Name: ',
-                                              info: 'customer name'),
+                                              title: 'Total Payment: ',
+                                              info:  histryPro.getAllOrdersByIdResponse!.data![index].totalPrice.toString()),
+
                                           ListViewInfoWidget(
-                                              title: 'Contact No: ',
-                                              info: listHistoryTile[index]
-                                              ['ContactNo']),
+                                              title: 'Selected Payment Type: ',
+                                              info: historyPro.getAllOrdersByIdResponse!.data![index].selectedPaymentType),
                                           ListViewInfoWidget(
                                               title: 'Pickup Address : ',
                                               info: histryPro.getAllOrdersByIdResponse!.data![index].pickUpAddress.toString()),
@@ -231,7 +224,7 @@ void initState(){
                                 ),
                               )
 
-
+///
                             : historyType == histryPro.getAllOrdersByIdResponse!.data![index].status.toString()
                                 ? Padding(
                                     padding: EdgeInsets.all(8.0),
@@ -326,8 +319,11 @@ else if(historyType=='process')
   List<String> historyTypeList = [
     'Order History',
     'pending',
-    'Due Delivery',
-    'Process at store',
+    'processing',
+    'on the way',
+    'picked from shop',
+    'delivered',
+    'rejected',
   ];
 }
 

@@ -2,25 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:laundry_delivery/providers/pickupProvider.dart';
 import 'package:laundry_delivery/screens/userAuthScreens/LoginScreen.dart';
-import 'package:laundry_delivery/utils/const/consts.dart';
 import 'package:laundry_delivery/utils/providerVeriables.dart';
 import 'package:laundry_delivery/utils/widgets/buttonCustom.dart';
 import 'package:laundry_delivery/utils/widgets/inputFieldCustom.dart';
-import 'package:provider/provider.dart';
-
 import '../../utils/colors.dart';
 import '../../utils/userStorage.dart';
 
-class MyProfieScreen extends StatefulWidget {
-  const MyProfieScreen({Key? key}) : super(key: key);
+class MyProfileScreen extends StatefulWidget {
+  const MyProfileScreen({Key? key}) : super(key: key);
 
   @override
-  State<MyProfieScreen> createState() => _MyProfieScreenState();
+  State<MyProfileScreen> createState() => _MyProfileScreenState();
 }
 
-class _MyProfieScreenState extends State<MyProfieScreen> {
+class _MyProfileScreenState extends State<MyProfileScreen> {
   @override
   void initState() {
     super.initState();

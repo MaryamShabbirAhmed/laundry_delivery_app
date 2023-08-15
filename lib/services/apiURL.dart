@@ -9,3 +9,5 @@ String getAllItemsURL="/laundry/getAllLaundryMenus";
 String bookOrderURL="/booking/bookOrder";
 String getAllOrderByIdURL="/booking/viewDriverOrders";
 String getDashboardDetailURL="/booking/getDashBoardPickups";
+String getOrderByRefIdURL="/booking/getOrderByReferenceId";
+String updateOrderUrl="/booking/updateOrder";
