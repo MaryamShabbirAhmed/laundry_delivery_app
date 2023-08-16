@@ -176,11 +176,11 @@ if( pickupBookingDateController.text.isEmpty
 return await sendBookingOrder();
 }
   ///
+
+  BoodOrderResponse? boodOrderResponse;
   Future<bool> sendBookingOrder() async {
     startProgress();
     getTotalPrice();
-
-    // Construct the order data using the selected items and quantities
     dynamic bookingOrder = {
       "bookingDate": pickupBookingDateController.text,
       "bookingTime": pickupBookingTimeController.text,
@@ -189,7 +189,7 @@ return await sendBookingOrder();
       "referenceId": referenceNoController.text,
       "pickUpLatLng": "pickUpLatLng",
       "pickUpAddress": pickupLocationController.text+pickupLocationController2.text,
-      "collectedPayment":"0",
+      "collectedPayment":collectedAmountController.text,
       "selectedPaymentType":selectedMethod,
       "userId": userID.toString()??'',
       "totalPrice": getTotalPrice(),
@@ -212,6 +212,9 @@ return await sendBookingOrder();
       {
         return false;
       }
+
+boodOrderResponse=boodOrderResponseFromJson(response);
+logger.i(boodOrderResponse);
     await successSnackBar('Done', 'Order Created');
     disposePickup();
 
@@ -221,8 +224,9 @@ return await sendBookingOrder();
 
   GetOrderByRefIdResponse? getOrderByRefIdResponse;
   OrderData? data;
+  String? refCode;
 Future<bool> getOrderByRefId({String? displayValue})async{
-
+refCode=displayValue;
 
     String response=await ApiServices.getMethod(getOrderByRefIdURL+'?referenceId=${displayValue}');
 
@@ -251,27 +255,37 @@ notifyListeners();
   String orderStatus = "";
   String paymentStatus = "";
   String paymentType = "";
-  String payment = "";
+  String payment = "0";
 
 
 
   UpdateOrderResponse? updateOrderResponse;
 Future<bool> updateOrder()async{
+  startProgress();
   bool isPaid=false;
+  logger.i(data!.collectedPayment);
+  if(int.parse(data!.collectedPayment.toString())!=0 )
+    {
+      if(int.parse(data!.collectedPayment.toString())>int.parse(payment) &&int.parse(payment)!=0)
+        {
+          errorSnackBar('Error', 'Amount is less than previous');
+          return false;
+        }
+
+    }
   if(int.parse(data!.totalPrice.toString())<=int.parse(payment) && data!.isPaid!=true)
     {
       isPaid=true;
     }
 if(orderStatus=='Delivered')
   {
-    if(!isPaid)
+    if(!isPaid && data!.isPaid!=false)
       {
         errorSnackBar('Error', 'Payment is not collected ');
         return false;
       }
   }
 
-  startProgress();
   Map<String,dynamic> body={
     "id":data!.id.toString(),
     "status":orderStatus,
@@ -284,14 +298,14 @@ if(orderStatus=='Delivered')
   };
   String response = await ApiServices.postMethod(body,updateOrderUrl);
 stopProgress();
-
+successSnackBar('Great!', 'Order Updated');
   if(response.isEmpty)
   {
     return false;
   }
   updateOrderResponse=updateOrderResponseFromJson(response);
-logger.i(updateOrderResponse!.data!.isPaid);
-logger.i(updateOrderResponse!.message);
+  logger.e(refCode);
+await getOrderByRefId(displayValue: refCode);
 
 
 return true;

@@ -62,15 +62,15 @@ class _OrderDetailsState extends State<OrderDetails> {
                           Text(
                             'Created By: ',
                             style: TextStyle(
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w500, fontSize: 16
                             ),
                           ),
-                          Text('  ${pick.data!.createdBy ?? ''} '),
+                          Text('  ${pick.data!.createdBy ?? ''} ', style: TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8),
+                      padding: const EdgeInsets.only(left: 8.0, right: 8,top:5,bottom:5),
                       child: Container(
                         color: secondaryColor,
                         height: 1,
@@ -85,16 +85,16 @@ class _OrderDetailsState extends State<OrderDetails> {
                           Text(
                             'Booking Date: ',
                             style: TextStyle(
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w500,fontSize: 16
                             ),
                           ),
                           Text(
-                              '${pick.data!.bookingDate!.month.toString() + '-' + pick.data!.bookingDate!.day.toString() + '-' + pick.data!.bookingDate!.year.toString() ?? ''} '),
+                              '${pick.data!.bookingDate!.month.toString() + '-' + pick.data!.bookingDate!.day.toString() + '-' + pick.data!.bookingDate!.year.toString() ?? ''} ', style: TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8),
+                      padding: const EdgeInsets.only(left: 8.0, right: 8,top:5,bottom:5),
                       child: Container(
                         color: secondaryColor,
                         height: 1,
@@ -109,16 +109,18 @@ class _OrderDetailsState extends State<OrderDetails> {
                           Text(
                             'Delivery Date: ',
                             style: TextStyle(
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w500,fontSize: 16
                             ),
                           ),
                           Text(
-                              '${pick.data!.deliveryDate!.month.toString() + '-' + pick.data!.deliveryDate!.day.toString() + '-' + pick.data!.deliveryDate!.year.toString() ?? ''} '),
+                              '${pick.data!.deliveryDate!.month.toString() + '-'
+                                  + pick.data!.deliveryDate!.day.toString() + '-'
+                                  + pick.data!.deliveryDate!.year.toString() ?? ''} ', style: TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8),
+                      padding: const EdgeInsets.only(left: 8.0, right: 8,top:5,bottom:5),
                       child: Container(
                         color: secondaryColor,
                         height: 1,
@@ -133,15 +135,15 @@ class _OrderDetailsState extends State<OrderDetails> {
                           Text(
                             'total Price: ',
                             style: TextStyle(
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w500,fontSize: 16
                             ),
                           ),
-                          Text('  ${pick.data!.totalPrice ?? ''} '),
+                          Text('  ${pick.data!.totalPrice ?? ''} ', style: TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8),
+                      padding: const EdgeInsets.only(left: 8.0, right: 8,top:5,bottom:5),
                       child: Container(
                         color: secondaryColor,
                         height: 1,
@@ -153,23 +155,31 @@ class _OrderDetailsState extends State<OrderDetails> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'payment Status: ',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                'payment Status: ',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,fontSize: 16
+                                ),
+
+                              ),
+                              Icon(Icons.edit,size: 15,),
+                            ],
                           ),
                           InkWell(
                               onTap: () {
                                 openDialog('paymentStatus');
                               },
                               child: Text(
-                                  ' ${pickupPro.paymentStatus != '' ? pickupPro.paymentStatus : pick.data!.paymentStatus ?? ''} ')),
+                                  ' ${pickupPro.paymentStatus != '' ?
+                                  pickupPro.paymentStatus : pick.data!.paymentStatus ?? ''} ',
+                                style: TextStyle(fontSize: 16),),)
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8),
+                      padding: const EdgeInsets.only(left: 8.0, right: 8,top:5,bottom:5),
                       child: Container(
                         color: secondaryColor,
                         height: 1,
@@ -181,11 +191,16 @@ class _OrderDetailsState extends State<OrderDetails> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'Collected Payment: ',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                'Collected Payment: ',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,fontSize: 16
+                                ),
+                              ),
+                              Icon(Icons.edit,size: 15,),
+                            ],
                           ),
                           InkWell(
                               onTap: () {
@@ -193,12 +208,14 @@ class _OrderDetailsState extends State<OrderDetails> {
                                 addAmountDialog();
                               },
                               child: Text(
-                                  '  ${pickupPro.payment != '' ? pickupPro.collectedAmountController.text : pick.data!.collectedPayment ?? ''} ')),
+                                  '  ${pickupPro.payment != '0' ?
+                                  pickupPro.collectedAmountController.text :
+                                  pick.data!.collectedPayment ?? ''} ', style: TextStyle(fontSize: 16),),),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8),
+                      padding: const EdgeInsets.only(left: 8.0, right: 8,top:5,bottom:5),
                       child: Container(
                         color: secondaryColor,
                         height: 1,
@@ -213,16 +230,16 @@ class _OrderDetailsState extends State<OrderDetails> {
                           Text(
                             'isPaid: ',
                             style: TextStyle(
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w500,fontSize: 16
                             ),
                           ),
                           Text(
-                              '  ${pick.data!.isPaid! ? 'Paid' : 'Not Paid'} '),
+                              '  ${pick.data!.isPaid! ? 'Paid' : 'Not Paid'} ', style: TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8),
+                      padding: const EdgeInsets.only(left: 8.0, right: 8,top:5,bottom:5),
                       child: Container(
                         color: secondaryColor,
                         height: 1,
@@ -234,23 +251,29 @@ class _OrderDetailsState extends State<OrderDetails> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'Selected Payment Type: ',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                'Selected Payment Type: ',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,fontSize: 16
+                                ),
+                              ),
+                              Icon(Icons.edit,size: 15,),
+                            ],
                           ),
                           InkWell(
                               onTap: () {
                                 openDialog('paymentType');
                               },
                               child: Text(
-                                  ' ${pickupPro.paymentType != '' ? pickupPro.paymentType : pick.data!.selectedPaymentType ?? ''} ')),
+                                  ' ${pickupPro.paymentType != '' ? pickupPro.paymentType :
+                                  pick.data!.selectedPaymentType ?? ''} ', style: TextStyle(fontSize: 16),),),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8),
+                      padding: const EdgeInsets.only(left: 8.0, right: 8,top:5,bottom:5),
                       child: Container(
                         color: secondaryColor,
                         height: 1,
@@ -262,23 +285,29 @@ class _OrderDetailsState extends State<OrderDetails> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'Order Status: ',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                'Order Status: ',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,fontSize: 16
+                                ),
+                              ),
+                              Icon(Icons.edit,size: 15,),
+                            ],
                           ),
                           InkWell(
                               onTap: () {
                                 openDialog('orderStatus');
                               },
                               child: Text(
-                                  ' ${pickupPro.orderStatus != '' ? pickupPro.orderStatus : pick.data!.status ?? ''} ')),
+                                  ' ${pickupPro.orderStatus != ''
+                                      ? pickupPro.orderStatus : pick.data!.status ?? ''} ', style: TextStyle(fontSize: 16),),),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8),
+                      padding: const EdgeInsets.only(left: 8.0, right: 8,top:5,bottom:5),
                       child: Container(
                         color: secondaryColor,
                         height: 1,
@@ -293,15 +322,15 @@ class _OrderDetailsState extends State<OrderDetails> {
                           Text(
                             'Reference Id: ',
                             style: TextStyle(
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w500,fontSize: 16
                             ),
                           ),
-                          Text('  ${pick.data!.referenceId ?? ''} '),
+                          Text('  ${pick.data!.referenceId ?? ''} ', style: TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8),
+                      padding: const EdgeInsets.only(left: 8.0, right: 8,top:5,bottom:5),
                       child: Container(
                         color: secondaryColor,
                         height: 1,

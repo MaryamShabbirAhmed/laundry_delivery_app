@@ -120,7 +120,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:laundry_delivery/providers/pickupProvider.dart';
-import 'package:laundry_delivery/responses/bookingResponse.dart';
 import 'package:laundry_delivery/screens/historyScreens/orderDetails.dart';
 import 'package:laundry_delivery/utils/providerVeriables.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';

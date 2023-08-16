@@ -140,6 +140,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   bool isValid = await authPro.checkSignUpValidation();
                   if (isValid) {
                     if(authData.isDriver) {
+                      authData.isDriver=false;
                       Get.offAll(DashboardScreen());
                       successSnackBar(
                           'Great!', 'you are Signed Up successfully');

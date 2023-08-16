@@ -72,6 +72,7 @@ class Body {
   String? collectedPayment;
   String? selectedPaymentType;
   String? createdBy;
+  String? referenceId;
   List<Item>? items;
 
   Body({
@@ -86,6 +87,7 @@ class Body {
     this.collectedPayment,
     this.selectedPaymentType,
     this.createdBy,
+    this.referenceId,
     this.items,
   });
 
@@ -101,6 +103,7 @@ class Body {
     collectedPayment: json["collectedPayment"],
     selectedPaymentType: json["selectedPaymentType"],
     createdBy: json["createdBy"],
+    referenceId: json["referenceId"],
     items: json["items"] == null ? [] : List<Item>.from(json["items"]!.map((x) => Item.fromJson(x))),
   );
 
@@ -116,6 +119,7 @@ class Body {
     "collectedPayment": collectedPayment,
     "selectedPaymentType": selectedPaymentType,
     "createdBy": createdBy,
+    "referenceId": referenceId,
     "items": items == null ? [] : List<dynamic>.from(items!.map((x) => x.toJson())),
   };
 }
@@ -157,9 +161,6 @@ class Item {
 }
 
 class Order {
-  String? paymentStatus;
-  bool? isPaid;
-  String? status;
   int? id;
   DateTime? bookingDate;
   String? bookingTime;
@@ -167,18 +168,19 @@ class Order {
   String? deliveryTime;
   String? pickUpLatLng;
   String? pickUpAddress;
-  int? userId;
   String? totalPrice;
   String? collectedPayment;
-  String? createdBy;
+  String? paymentStatus;
+  bool? isPaid;
   String? selectedPaymentType;
-  DateTime? updatedAt;
+  String? status;
+  String? referenceId;
   DateTime? createdAt;
+  DateTime? updatedAt;
+  int? userId;
+  int? createdBy;
 
   Order({
-    this.paymentStatus,
-    this.isPaid,
-    this.status,
     this.id,
     this.bookingDate,
     this.bookingTime,
@@ -186,19 +188,20 @@ class Order {
     this.deliveryTime,
     this.pickUpLatLng,
     this.pickUpAddress,
-    this.userId,
     this.totalPrice,
     this.collectedPayment,
-    this.createdBy,
+    this.paymentStatus,
+    this.isPaid,
     this.selectedPaymentType,
-    this.updatedAt,
+    this.status,
+    this.referenceId,
     this.createdAt,
+    this.updatedAt,
+    this.userId,
+    this.createdBy,
   });
 
   factory Order.fromJson(Map<String, dynamic> json) => Order(
-    paymentStatus: json["paymentStatus"],
-    isPaid: json["isPaid"],
-    status: json["status"],
     id: json["id"],
     bookingDate: json["bookingDate"] == null ? null : DateTime.parse(json["bookingDate"]),
     bookingTime: json["bookingTime"],
@@ -206,19 +209,20 @@ class Order {
     deliveryTime: json["deliveryTime"],
     pickUpLatLng: json["pickUpLatLng"],
     pickUpAddress: json["pickUpAddress"],
-    userId: json["userId"],
     totalPrice: json["totalPrice"],
     collectedPayment: json["collectedPayment"],
-    createdBy: json["createdBy"],
+    paymentStatus: json["paymentStatus"],
+    isPaid: json["isPaid"],
     selectedPaymentType: json["selectedPaymentType"],
-    updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+    status: json["status"],
+    referenceId: json["referenceId"],
     createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+    updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+    userId: json["userId"],
+    createdBy: json["createdBy"],
   );
 
   Map<String, dynamic> toJson() => {
-    "paymentStatus": paymentStatus,
-    "isPaid": isPaid,
-    "status": status,
     "id": id,
     "bookingDate": "${bookingDate!.year.toString().padLeft(4, '0')}-${bookingDate!.month.toString().padLeft(2, '0')}-${bookingDate!.day.toString().padLeft(2, '0')}",
     "bookingTime": bookingTime,
@@ -226,13 +230,17 @@ class Order {
     "deliveryTime": deliveryTime,
     "pickUpLatLng": pickUpLatLng,
     "pickUpAddress": pickUpAddress,
-    "userId": userId,
     "totalPrice": totalPrice,
     "collectedPayment": collectedPayment,
-    "createdBy": createdBy,
+    "paymentStatus": paymentStatus,
+    "isPaid": isPaid,
     "selectedPaymentType": selectedPaymentType,
-    "updatedAt": updatedAt?.toIso8601String(),
+    "status": status,
+    "referenceId": referenceId,
     "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
+    "userId": userId,
+    "createdBy": createdBy,
   };
 }
 
