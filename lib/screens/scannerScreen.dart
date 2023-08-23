@@ -126,6 +126,8 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:provider/provider.dart';
 import '../scanner_error_widget.dart';
 import '../utils/colors.dart';
+import '../utils/widgets/snackbars.dart';
+
 
 class ScannerScreen extends StatefulWidget {
   const ScannerScreen({Key? key}) : super(key: key);
@@ -146,6 +148,8 @@ class _ScannerScreenState extends State<ScannerScreen>
   void initState() {
     controller.stop();
     super.initState();
+    pickupPro.isGet = true;
+
   }
 
   void _startOrStop() {
@@ -254,7 +258,9 @@ class _ScannerScreenState extends State<ScannerScreen>
                         }
                       }
                     });
+
                     if (this.barcode != null && pickupPro.isGet) {
+                      pickupPro.barcode = null;
                       controller.stop();
                       bool getOrder=await pickupPro.getOrderByRefId(
                           displayValue: this
@@ -266,6 +272,10 @@ class _ScannerScreenState extends State<ScannerScreen>
                       if(getOrder)
                         {
                           Get.to(OrderDetails());
+                        }
+                      else
+                        {
+                          logger.i('Not found');
                         }
 
                     }

@@ -7,7 +7,9 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../responses/bookingResponse.dart';
 import '../responses/getAllItemsResponse.dart';
+import '../responses/getCustomerSearchResponse.dart';
 import '../responses/getOrderByRefIdResponse.dart';
+import '../responses/getServiceAreasResponse.dart';
 import '../responses/updateResponse.dart';
 import '../responses/userLoginResponse.dart';
 import '../screens/pickupScreens/pickupCloth.dart';
@@ -28,6 +30,7 @@ class PickupProvider extends ChangeNotifier {
   TextEditingController pickupDeliveryTimeController = TextEditingController();
   TextEditingController pickupBookingTimeController = TextEditingController();
   TextEditingController referenceNoController = TextEditingController();
+  TextEditingController searcKeyWord = TextEditingController();
   DateTime selectedDate = DateTime.now();
   TextEditingController emailController = TextEditingController();
   TextEditingController userPhoneNumberController = TextEditingController();
@@ -60,29 +63,47 @@ class PickupProvider extends ChangeNotifier {
     selectedMethod=null;
   }
     void customerAvailableData(){
-      pickupCustomerNameController.text=userLoginResponse!.data!.name.toString()??'';
-      pickupContactController.text=userLoginResponse!.data!.mobileNumber.toString()??'';
+      // pickupCustomerNameController.text=getCustomerSearchResponse.data;
+      // pickupContactController.text=userLoginResponse!.data!.mobileNumber.toString()??'';
       userID=userLoginResponse!.data!.id.toString()?? '';
     }
+  GetCustomerSearchResponse? getCustomerSearchResponse;
   Future<bool> searchCustomer() async {
     startProgress();
     Map<String, String> fields = {
-      'mobileNumber': userPhoneNumberController.text
+      'mobileNumber': searcKeyWord.text,
+      'name': searcKeyWord.text,
+      'address': searcKeyWord.text,
     };
-    String response = await ApiServices.postMethod(fields, getUserByNumberURL);
+    String response = await ApiServices.getWithBodyMethod(fields, getUserBySearchURL);
     stopProgress();
     if (response.isEmpty) {
       return false;
     }
-    userLoginResponse = userLoginResponseFromJson(response);
-
-    customerAvailableData();
-    Get.to(PickupClothScreen(
-      userLoginResponse: userLoginResponse,
-    ));
+    getCustomerSearchResponse=getCustomerSearchResponseFromJson(response);
     notifyListeners();
     return true;
   }
+
+
+
+  GetServiceAreasResponse? getServiceAreasResponse;
+  Future<bool> getServiceAreas()async
+  {
+
+    String response=await ApiServices.getMethod(getServiceAreasURL);
+if(response.isEmpty)
+    {
+      return false;
+    }
+
+    getServiceAreasResponse=getServiceAreasResponseFromJson(response);
+logger.i(getServiceAreasResponse!.data![0].address);
+    notifyListeners();
+    return true;
+  }
+
+///
   Future<void> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
         context: context,
@@ -95,6 +116,7 @@ class PickupProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
+  ///
   Future<void> getTime(var context, TextEditingController dateSelect) async {
     TimeOfDay? pickedTime = await showTimePicker(
       initialTime: TimeOfDay.now(),
@@ -127,6 +149,7 @@ class PickupProvider extends ChangeNotifier {
        notifyListeners();
        return true;
      }
+ ///
   void toggleItemSelection(Datum item) {
   if (selectedItems.contains(item)) {
   selectedItems.remove(item);
@@ -135,6 +158,12 @@ class PickupProvider extends ChangeNotifier {
   }
   notifyListeners();
   }
+ ///
+  void toggleLocationSelection(String item) {
+
+  notifyListeners();
+  }
+ ///
   int getTotalPrice() {
     selectedItemsList = [];
     int totalPrice = 0;
@@ -188,7 +217,7 @@ return await sendBookingOrder();
       "deliveryTime": pickupDeliveryTimeController.text,
       "referenceId": referenceNoController.text,
       "pickUpLatLng": "pickUpLatLng",
-      "pickUpAddress": pickupLocationController.text+pickupLocationController2.text,
+      "pickUpAddress": pickupLocationController.text,
       "collectedPayment":collectedAmountController.text,
       "selectedPaymentType":selectedMethod,
       "userId": userID.toString()??'',
@@ -244,7 +273,7 @@ if(getOrderByRefIdResponse!.data==null)
     errorSnackBar('Error', 'No Data Found!');
     return false;
   }
-    data= getOrderByRefIdResponse!.data;
+    data= getOrderByRefIdResponse!.data![0];
 notifyListeners();
     return true;
 }
@@ -263,12 +292,13 @@ notifyListeners();
 Future<bool> updateOrder()async{
   startProgress();
   bool isPaid=false;
-  logger.i(data!.collectedPayment);
+  logger.i(data!.isPaid);
   if(int.parse(data!.collectedPayment.toString())!=0 )
     {
       if(int.parse(data!.collectedPayment.toString())>int.parse(payment) &&int.parse(payment)!=0)
         {
           errorSnackBar('Error', 'Amount is less than previous');
+          stopProgress();
           return false;
         }
 
@@ -279,9 +309,11 @@ Future<bool> updateOrder()async{
     }
 if(orderStatus=='Delivered')
   {
-    if(!isPaid && data!.isPaid!=false)
+    if(!isPaid  && data!.isPaid==false)
       {
+        stopProgress();
         errorSnackBar('Error', 'Payment is not collected ');
+
         return false;
       }
   }

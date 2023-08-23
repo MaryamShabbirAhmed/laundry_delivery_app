@@ -12,7 +12,7 @@ class GetOrderByRefIdResponse {
   bool? error;
   int? errorCode;
   String? message;
-  OrderData? data;
+  List<OrderData>? data;
 
   GetOrderByRefIdResponse({
     this.error,
@@ -25,14 +25,17 @@ class GetOrderByRefIdResponse {
     error: json["error"],
     errorCode: json["errorCode"],
     message: json["message"],
-    data: json["data"] == null ? null : OrderData.fromJson(json["data"]),
+    // data: json["data"] == null ? null : OrderData.fromJson(json["data"]),
+    data: json["data"] == null ? [] : List<OrderData>.from(json["data"]!.map((x) => OrderData.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
     "error": error,
     "errorCode": errorCode,
     "message": message,
-    "data": data?.toJson(),
+    // "data": data?.toJson(),
+    "data": data == null ? [] : List<OrderData>.from(data!.map((x) => x.toJson())),
+
   };
 }
 

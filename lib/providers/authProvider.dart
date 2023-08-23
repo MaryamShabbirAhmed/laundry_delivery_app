@@ -73,10 +73,11 @@ bool check=StorageCRUD.box.hasData(StorageKeys.userData);
     if (userNameController.text.isEmpty) {
       errorSnackBar('Error!', 'Enter Name..');
       return false;
-    } if (emirateNoController.text.isEmpty) {
-      errorSnackBar('Error!', 'Enter EMIRATE NO..');
-      return false;
     }
+    // if (emirateNoController.text.isEmpty) {
+    //   errorSnackBar('Error!', 'Enter EMIRATE NO..');
+    //   return false;
+    // }
     if (emailController.text.isEmpty) {
       errorSnackBar('Error!', 'Enter Email..');
       return false;

@@ -52,5 +52,22 @@ class ApiServices {
        }
   }
 
+ static Future<String> getWithBodyMethod(Map<String, dynamic> fields,@required String feedURL,) async {
+   http.Request request=http.Request('GET', Uri.parse(baseURL+feedURL));
+   request.headers.addAll(headers);
+request.body=jsonEncode(fields);
+   http.StreamedResponse  response= await request.send();
+   String result= await response.stream.bytesToString();
+   if(response.statusCode==200 || response.statusCode==201)
+   {
+     return result;
+   }
+   else
+   {
+     dynamic parsed = jsonDecode(result);
+     errorSnackBar('error!', 'something is wrong');
+     return "";
+   }
+ }
 
 }

@@ -6,10 +6,8 @@ import 'package:laundry_delivery/utils/providerVeriables.dart';
 import 'package:laundry_delivery/utils/widgets/buttonCustom.dart';
 import 'package:laundry_delivery/utils/widgets/inputFieldCustom.dart';
 import 'package:provider/provider.dart';
-
 import '../../utils/widgets/snackbars.dart';
 import '../dashboardScreens/dashboard.dart';
-
 class OrderDetails extends StatefulWidget {
   const OrderDetails({Key? key}) : super(key: key);
 
@@ -31,9 +29,9 @@ class _OrderDetailsState extends State<OrderDetails> {
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
-              Get.to(DashboardScreen(index: 0,));
+              // Get.to(DashboardScreen(index: 0,));
 
-              // Get.back();
+              Get.back();
             },
             icon: Icon(
               Icons.arrow_back_ios_new_outlined,

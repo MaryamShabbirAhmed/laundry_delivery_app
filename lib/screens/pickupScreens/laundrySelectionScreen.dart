@@ -2,17 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:laundry_delivery/services/apiServices.dart';
-import 'package:laundry_delivery/services/apiURL.dart';
 import 'package:laundry_delivery/utils/colors.dart';
 import 'package:laundry_delivery/utils/providerVeriables.dart';
 import 'package:laundry_delivery/utils/widgets/buttonCustom.dart';
 import 'package:provider/provider.dart';
-
 import '../../providers/pickupProvider.dart';
 import '../../responses/getAllItemsResponse.dart';
-import 'package:http/http.dart' as http;
-
 import 'orderPayment.dart';
 
 class LaundrySelectionScreen extends StatefulWidget {

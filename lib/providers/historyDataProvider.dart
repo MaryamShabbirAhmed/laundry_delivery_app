@@ -4,8 +4,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:laundry_delivery/services/apiServices.dart';
 import 'package:laundry_delivery/utils/userStorage.dart';
-import '../responses/getAllOrdersById.dart';
 import '../responses/getDashboardDetailsResponse.dart';
+import '../responses/getOrderByRefIdResponse.dart';
 import '../services/apiURL.dart';
 import '../utils/widgets/snackbars.dart';
 
@@ -15,7 +15,7 @@ class HistoryProvider extends ChangeNotifier{
   //
   // void listData(){listDataResponseFromJson(listHistoryTile);}
 
-  GetAllOrdersByIdResponse? getAllOrdersByIdResponse;
+  GetOrderByRefIdResponse? getAllOrdersByIdResponse;
 
   Future<bool> getOrderHistory() async {
 
@@ -24,7 +24,7 @@ class HistoryProvider extends ChangeNotifier{
       {
         return false;
       }
-    getAllOrdersByIdResponse=getAllOrdersByIdResponseFromJson(response);
+    getAllOrdersByIdResponse=getOrderByRefIdResponseFromJson(response);
 logger.i(getAllOrdersByIdResponse!.data!.length);
 
     notifyListeners();

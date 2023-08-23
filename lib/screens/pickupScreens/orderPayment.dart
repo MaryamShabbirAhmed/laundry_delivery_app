@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:laundry_delivery/providers/pickupProvider.dart';
 import 'package:laundry_delivery/utils/providerVeriables.dart';
-import 'package:laundry_delivery/utils/userStorage.dart';
 import 'package:laundry_delivery/utils/widgets/inputFieldCustom.dart';
 import 'package:provider/provider.dart';
-
 import '../../utils/colors.dart';
 import '../../utils/widgets/buttonCustom.dart';
-import '../../utils/widgets/snackbars.dart';
 import '../scannerScreen.dart';
 
 class PaymentDropdown extends StatefulWidget {
@@ -48,6 +45,7 @@ class _PaymentDropdownState extends State<PaymentDropdown> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 InputFieldCustom(
+                  borderColor: secondaryColor,
                   label: 'Enter Reference No:',
                   controller: pickupPro.referenceNoController,
                   suffix: IconButton(

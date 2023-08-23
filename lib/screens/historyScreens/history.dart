@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:laundry_delivery/providers/historyDataProvider.dart';
+import 'package:laundry_delivery/screens/historyScreens/orderDetails.dart';
 import 'package:laundry_delivery/utils/providerVeriables.dart';
 import 'package:provider/provider.dart';
 import '../../utils/colors.dart';
@@ -226,64 +227,71 @@ void initState(){
 
 ///
                             : historyType == histryPro.getAllOrdersByIdResponse!.data![index].status.toString()
-                                ? Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
-                                          color: whiteColor,
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Color(0xffDDDDDD),
-                                              blurRadius: 3,
-                                              spreadRadius: 1.1,
-                                              offset: Offset(0.0, 0.0),
-                                            )
-                                          ]),
-                                      child: Stack(
-                                        children: [
-                                          Align(
-                                            alignment: Alignment.topRight,
-                                            child: StatusWidget(
-                                                status: histryPro.getAllOrdersByIdResponse!.data![index].status.toString(),
-                                                backgroundColor: historyColor),
-                                          ),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              SizedBox(
-                                                height: 15,
-                                              ),
-                                              ListViewInfoWidget(
-                                                  title: 'Order No',
-                                                  info:  histryPro.getAllOrdersByIdResponse!.data![index].id.toString()),
-                                              ListViewInfoWidget(
-                                                  title: 'Name: ',
-                                                  info: 'customer name'),
-                                              ListViewInfoWidget(
-                                                  title: 'Contact No: ',
-                                                  info: listHistoryTile[index]
-                                                      ['ContactNo']),
-                                              ListViewInfoWidget(
-                                                  title: 'Pickup Address : ',
-                                                  info: histryPro.getAllOrdersByIdResponse!.data![index].pickUpAddress.toString()),
-                                              ListViewInfoWidget(
-                                                  title: 'No of cloths: ',
-                                                  info: histryPro.getAllOrdersByIdResponse!.data![index].orderDetails!.length.toString()),
-                                              ListViewInfoWidget(
-                                                  title: 'Payment: ',
-                                                  info: histryPro.getAllOrdersByIdResponse!.data![index].paymentStatus.toString()),
-                                              ListViewInfoWidget(
-                                                title: 'time: ',
-                                                info:"${DateTime.now().difference( histryPro.getAllOrdersByIdResponse!.data![index].createdAt!).inDays.toString()}  Day(s) Ago",
-                                              ),
-                                            ],
-                                          ),
-                                        ],
+                                ? InkWell(
+                            onTap: (){
+                              pickupPro.data= histryPro.getAllOrdersByIdResponse!.data![index];
+                              Get.to(OrderDetails());
+
+                            },
+                                  child: Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(10),
+                                            color: whiteColor,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Color(0xffDDDDDD),
+                                                blurRadius: 3,
+                                                spreadRadius: 1.1,
+                                                offset: Offset(0.0, 0.0),
+                                              )
+                                            ]),
+                                        child: Stack(
+                                          children: [
+                                            Align(
+                                              alignment: Alignment.topRight,
+                                              child: StatusWidget(
+                                                  status: histryPro.getAllOrdersByIdResponse!.data![index].status.toString(),
+                                                  backgroundColor: historyColor),
+                                            ),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                SizedBox(
+                                                  height: 15,
+                                                ),
+                                                ListViewInfoWidget(
+                                                    title: 'Order No',
+                                                    info:  histryPro.getAllOrdersByIdResponse!.data![index].id.toString()),
+                                                ListViewInfoWidget(
+                                                    title: 'Name: ',
+                                                    info: 'customer name'),
+                                                ListViewInfoWidget(
+                                                    title: 'Contact No: ',
+                                                    info: listHistoryTile[index]
+                                                        ['ContactNo']),
+                                                ListViewInfoWidget(
+                                                    title: 'Pickup Address : ',
+                                                    info: histryPro.getAllOrdersByIdResponse!.data![index].pickUpAddress.toString()),
+                                                ListViewInfoWidget(
+                                                    title: 'No of cloths: ',
+                                                    info: histryPro.getAllOrdersByIdResponse!.data![index].orderDetails!.length.toString()),
+                                                ListViewInfoWidget(
+                                                    title: 'Payment: ',
+                                                    info: histryPro.getAllOrdersByIdResponse!.data![index].paymentStatus.toString()),
+                                                ListViewInfoWidget(
+                                                  title: 'time: ',
+                                                  info:"${DateTime.now().difference( histryPro.getAllOrdersByIdResponse!.data![index].createdAt!).inDays.toString()}  Day(s) Ago",
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  )
+                                )
                                 : SizedBox();
                       }),
                 )

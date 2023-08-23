@@ -5,6 +5,7 @@ import 'package:laundry_delivery/responses/userLoginResponse.dart';
 import 'package:laundry_delivery/screens/pickupScreens/pickupItemSelect.dart';
 
 import 'package:laundry_delivery/utils/colors.dart';
+import 'package:laundry_delivery/utils/providerVeriables.dart';
 import 'package:laundry_delivery/utils/widgets/buttonCustom.dart';
 import 'package:laundry_delivery/utils/widgets/inputFieldCustom.dart';
 import 'package:provider/provider.dart';
@@ -15,14 +16,22 @@ import 'laundrySelectionScreen.dart';
 class PickupClothScreen extends StatefulWidget {
   UserLoginResponse? userLoginResponse;
 
-
-  PickupClothScreen( {this.userLoginResponse,Key? key}) : super(key: key);
+  PickupClothScreen({this.userLoginResponse, Key? key}) : super(key: key);
 
   @override
   State<PickupClothScreen> createState() => _PickupClothScreenState();
 }
 
 class _PickupClothScreenState extends State<PickupClothScreen> {
+  bool _isExpanded = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    pickupPro.getServiceAreas();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     PickupProvider pickupPro = Provider.of(context, listen: false);
@@ -46,71 +55,73 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Padding(
-            //   padding: EdgeInsets.all(8.0),
-            //   child: Container(
-            //     height: 43,
-            //     child: Center(
-            //       child: SearchBar(
-            //         hintText: 'Search customer name or number',
-            //         shadowColor: MaterialStateProperty.resolveWith(
-            //           (state) {
-            //             return Colors.transparent;
-            //           },
-            //         ),
-            //         hintStyle: MaterialStateProperty.resolveWith((states) {
-            //           return TextStyle(color: borderGreyColor);
-            //         }),
-            //         backgroundColor:
-            //             MaterialStateProperty.resolveWith((states) {
-            //           return Color(0xFFF5F5F5);
-            //         }),
-            //         shape: MaterialStateProperty.resolveWith((states) {
-            //           return RoundedRectangleBorder(
-            //               borderRadius: BorderRadius.circular(10));
-            //         }),
-            //         leading: Image.asset(
-            //           'assets/dashboard_images/search.png',
-            //           color: borderGreyColor,
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            InputFieldCustom(
-              controller: pickupPro.pickupLocationController,
-              label: 'Location',
-              hint: 'House / Flat / Block No',
+            Container(
+              child: ExpansionTile(
+                title: Text('Service Areas'),
+                onExpansionChanged: (expanded) {
+                  setState(() {
+                    _isExpanded = expanded;
+                  });
+                },
+                children: [
+                  if (pickupPro.getServiceAreasResponse != null &&
+                      pickupPro.getServiceAreasResponse!.data != null)
+                    _isExpanded
+                        ? Container(
+                      // Wrap the list in a container to set the height when expanded
+                      height: 200,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: pickupPro
+                              .getServiceAreasResponse!.data!
+                              .map((area) {
+                            return InkWell(
+                              onTap: (){
+                                pickupPro.pickupLocationController.text=area.address.toString();
+                              },
+
+
+                              child: ListTile(
+                                title: Text(
+                                  area.address.toString(),
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    )
+                        : SingleChildScrollView(
+                      // Use a SingleChildScrollView without a height when not expanded
+                      child: Column(
+                        children: pickupPro
+                            .getServiceAreasResponse!.data!
+                            .map((area) {
+                          return ListTile(
+                            title: Text(
+                              area.address.toString(),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    )
+                  else
+                    Container(),
+                ],
+              ),
             ),
-            InputFieldCustom(
-              controller: pickupPro.pickupLocationController2,
-              label: null,
-              hint: 'Apartment / Road / Area',
-            ),
+
+
             InputFieldCustom(
               controller: pickupPro.pickupCustomerNameController,
               label: 'Name',
               hint: 'Enter Customer Name',
             ),
             InputFieldCustom(
-
               controller: pickupPro.pickupContactController,
               label: 'Contact Number',
               hint: 'Enter Contact Number',
             ),
-            // InputFieldCustom(
-            //   controller: pickupPro.pickupPacketController,
-            //   label: 'Pickup packets',
-            //   hint: 'Enter Pick Up Packets',
-            // ),
-            // InputFieldCustom(
-            //   controller: pickupPro.pickupRemarksController,
-            //   label: 'Remarks',
-            //   hint: 'Enter Remarks...',
-            //   maxLines: 4,
-            //   inputType: TextInputType.multiline,
-            //   minLines: 4,
-            // ),
             InputFieldCustom(
               readOnly: true,
               controller: pickupPro.pickupBookingDateController,
@@ -120,7 +131,7 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
                   onPressed: () async {
                     await pickupPro.selectDate(context);
                     pickupPro.pickupBookingDateController.text =
-                    "${pickupPro.selectedDate.toLocal()}".split(' ')[0];
+                        "${pickupPro.selectedDate.toLocal()}".split(' ')[0];
                     setState(() {});
                   },
                   icon: Icon(Icons.calendar_month, color: borderGreyColor)),
@@ -133,7 +144,8 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
               suffix: IconButton(
                 icon: Icon(Icons.access_time_rounded, color: borderGreyColor),
                 onPressed: () async {
-                  pickupPro.getTime(context, pickupPro.pickupBookingTimeController);
+                  pickupPro.getTime(
+                      context, pickupPro.pickupBookingTimeController);
                 },
               ),
             ),
@@ -159,7 +171,8 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
               suffix: IconButton(
                 icon: Icon(Icons.access_time_rounded, color: borderGreyColor),
                 onPressed: () async {
-                  pickupPro.getTime(context,pickupPro.pickupDeliveryTimeController);
+                  pickupPro.getTime(
+                      context, pickupPro.pickupDeliveryTimeController);
                 },
               ),
             ),
@@ -167,9 +180,8 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
             CustomButton(
               label: 'Next',
               onPressed: () async {
-             await  pickupPro.getAllItems();
-             logger.i(pickupPro.pickupBookingTimeController.text);
-                     Get.to(LaundrySelectionScreen());
+                await pickupPro.getAllItems();
+                Get.to(LaundrySelectionScreen());
                 // await pickupPro.pickupInputValidation();
                 // successSnackBar('Success', 'Submitted Successfully', context);
               },
