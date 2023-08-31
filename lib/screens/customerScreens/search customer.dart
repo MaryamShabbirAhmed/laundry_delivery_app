@@ -95,6 +95,8 @@ class _SearchCustomerState extends State<SearchCustomer> {
                                                     .id
                                                     .toString() ??
                                                 '';
+                                            pickupPro.searcKeyWord.clear();
+                                            pickupPro.getCustomerSearchResponse=null;
                                             Get.to(PickupClothScreen());
                                           },
                                           child: Padding(

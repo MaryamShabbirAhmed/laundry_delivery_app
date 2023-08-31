@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5cd7b8c-2cc1-4df6-b010-215d7b67449f" name="Changes" comment="barcode implemented">
-      <change afterPath="$PROJECT_DIR$/lib/responses/getCustomerSearchResponse.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/responses/getServiceAreasResponse.dart" afterDir="false" />
+    <list default="true" id="c5cd7b8c-2cc1-4df6-b010-215d7b67449f" name="Changes" comment="barcode issue resolved&#10;service areas implemented&#10;search option modified">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
@@ -17,21 +15,16 @@
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/providers/authProvider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/providers/authProvider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/providers/historyDataProvider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/providers/historyDataProvider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/providers/pickupProvider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/providers/pickupProvider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/responses/getOrderByRefIdResponse.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/responses/getOrderByRefIdResponse.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/responses/userLoginResponse.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/responses/userLoginResponse.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/customerScreens/search customer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/customerScreens/search customer.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/historyScreens/history.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/historyScreens/history.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/historyScreens/orderDetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/historyScreens/orderDetails.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/pickupScreens/laundrySelectionScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/pickupScreens/laundrySelectionScreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/pickupScreens/orderPayment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/pickupScreens/orderPayment.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/pickupScreens/pickupCloth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/pickupScreens/pickupCloth.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/scannerScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/scannerScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/profileScreens/myProfile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/profileScreens/myProfile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/userAuthScreens/signupScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/userAuthScreens/signupScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services/apiServices.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/apiServices.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services/apiURL.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/apiURL.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/userStorage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/userStorage.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +46,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/Documents/flutter/bin/cache/pkg/sky_engine/lib/core/date_time.dart" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -215,7 +211,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1692167632105</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL‎-00016" summary="barcode issue resolved&#10;service areas implemented&#10;search option modified">
+      <created>1692795531935</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL‎-00016" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1692795531935</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -281,7 +284,8 @@
     <MESSAGE value="order process done" />
     <MESSAGE value="barcode" />
     <MESSAGE value="barcode implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="barcode implemented" />
+    <MESSAGE value="barcode issue resolved&#10;service areas implemented&#10;search option modified" />
+    <option name="LAST_COMMIT_MESSAGE" value="barcode issue resolved&#10;service areas implemented&#10;search option modified" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

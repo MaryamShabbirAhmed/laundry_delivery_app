@@ -19,7 +19,7 @@ class AuthProvider extends ChangeNotifier {
   TextEditingController repassword = TextEditingController();
   TextEditingController dobController = TextEditingController();
   TextEditingController userNameController = TextEditingController();
-  TextEditingController emirateNoController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
   TextEditingController userPhoneNumberController = TextEditingController();
 bool isDriver=true;
   ///
@@ -28,7 +28,7 @@ bool isDriver=true;
     password.clear();
     repassword.clear();
     userNameController.clear();
-    emirateNoController.clear();
+    addressController.clear();
     userPhoneNumberController.clear();
   }
 
@@ -74,10 +74,10 @@ bool check=StorageCRUD.box.hasData(StorageKeys.userData);
       errorSnackBar('Error!', 'Enter Name..');
       return false;
     }
-    // if (emirateNoController.text.isEmpty) {
-    //   errorSnackBar('Error!', 'Enter EMIRATE NO..');
-    //   return false;
-    // }
+    if (addressController.text.isEmpty) {
+      errorSnackBar('Error!', 'Enter Address..');
+      return false;
+    }
     if (emailController.text.isEmpty) {
       errorSnackBar('Error!', 'Enter Email..');
       return false;
@@ -95,7 +95,7 @@ bool check=StorageCRUD.box.hasData(StorageKeys.userData);
       'loginId': emailController.text,
       'name': userNameController.text,
       'mobileNumber': userPhoneNumberController.text,
-      'emiratesIdNo': emirateNoController.text,
+      'address': addressController.text,
       'userType': isDriver?'Driver':'Customer',
       'password': password.text??''
     };
@@ -154,12 +154,12 @@ bool check=StorageCRUD.box.hasData(StorageKeys.userData);
   }
   ///
 
-   userProfile(){
-    emirateNoController.text=StorageCRUD.getUser().data!.emiratesIdNo.toString();
+  Future userProfile()async{
+     addressController.text=StorageCRUD.getUser().data!.address=='null'?'':StorageCRUD.getUser().data!.address.toString();
     userPhoneNumberController.text=StorageCRUD.getUser().data!.mobileNumber.toString();
     userNameController.text=StorageCRUD.getUser().data!.name.toString();
     emailController.text=StorageCRUD.getUser().data!.loginId.toString();
-    dobController.text=StorageCRUD.getUser().data!.dob=='null'? StorageCRUD.getUser().data!.dob.toString():'2023-4-7';
+    dobController.text=StorageCRUD.getUser().data!.dob=='null'? '':StorageCRUD.getUser().data!.dob.toString();
     // password.text=StorageCRUD.getUser().data!.pass.toString();
 
 
@@ -184,7 +184,7 @@ bool check=StorageCRUD.box.hasData(StorageKeys.userData);
     if (userNameController.text.isEmpty) {
       errorSnackBar('Error!', 'Enter Name..');
       return false;
-    } if (emirateNoController.text.isEmpty) {
+    } if (addressController.text.isEmpty) {
       errorSnackBar('Error!', 'Enter EMIRATE NO..');
       return false;
     }
@@ -207,7 +207,7 @@ bool check=StorageCRUD.box.hasData(StorageKeys.userData);
       'name': userNameController.text,
       'dob': dobController.text,
       'mobileNumber': userPhoneNumberController.text,
-      'emiratesIdNo': emirateNoController.text,
+      'address': addressController.text,
 
     };
     String response = await ApiServices.postMethod(fields, updateUserURL);

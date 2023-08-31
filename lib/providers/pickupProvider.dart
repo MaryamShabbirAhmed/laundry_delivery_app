@@ -98,7 +98,6 @@ if(response.isEmpty)
     }
 
     getServiceAreasResponse=getServiceAreasResponseFromJson(response);
-logger.i(getServiceAreasResponse!.data![0].address);
     notifyListeners();
     return true;
   }
@@ -236,7 +235,11 @@ return await sendBookingOrder();
 
 
     String response=await ApiServices.postMethod(bookingOrder, bookOrderURL);
+
     stopProgress();
+    Get.back();
+    Get.back();
+    Get.back();
     if(response.isEmpty)
       {
         return false;

@@ -1,3 +1,4 @@
+import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
@@ -17,15 +18,20 @@ class MyProfileScreen extends StatefulWidget {
 }
 
 class _MyProfileScreenState extends State<MyProfileScreen> {
+
+
   @override
   void initState() {
     super.initState();
     StorageCRUD.getUser();
-    authPro.userProfile();
+    Future.delayed(Duration.zero, () {
+      authPro.userProfile();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
@@ -212,8 +218,8 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                 ),
                 ProfileTile(
                   icon: Icons.person_outline,
-                  title: 'EMIRATES ID NO.',
-                  controller: authPro.emirateNoController,
+                  title: 'Addrese.',
+                  controller: authPro.addressController,
                   // readOnly: true,
                 ),
 

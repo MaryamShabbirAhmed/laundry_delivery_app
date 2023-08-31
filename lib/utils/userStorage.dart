@@ -33,7 +33,7 @@ class StorageCRUD{
 
   static Future<void> saveUser(String data) async {
     await box.write(StorageKeys.userData, data);
-    logger.i(box.read(StorageKeys.userData));
+
   }
 }
 

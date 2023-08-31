@@ -165,69 +165,76 @@ void initState(){
                         }
                         return
                           historyType == 'Order History'
-                            ? Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: whiteColor,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0xffDDDDDD),
-                                          blurRadius: 3,
-                                          spreadRadius: 1.1,
-                                          offset: Offset(0.0, 0.0),
-                                        )
-                                      ]),
-                                  child: Stack(
-                                    children: [
-                                      Align(
-                                        alignment: Alignment.topRight,
-                                        child: StatusWidget(
-                                            status: histryPro.getAllOrdersByIdResponse!.data![index].status.toString(),
+                            ?    InkWell(
+                            onTap: (){
+                              pickupPro.data= histryPro.getAllOrdersByIdResponse!.data![index];
+                              Get.to(OrderDetails());
 
-                                            backgroundColor: historyColor),
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          SizedBox(
-                                            height: 15,
-                                          ),
-                                          ListViewInfoWidget(
-                                              title: 'Order No',
-                                              info:  histryPro.getAllOrdersByIdResponse!.data![index].id.toString()),
-                                          ListViewInfoWidget(
-                                              title: 'Total Payment: ',
-                                              info:  histryPro.getAllOrdersByIdResponse!.data![index].totalPrice.toString()),
+                            },
+                              child: Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: whiteColor,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Color(0xffDDDDDD),
+                                            blurRadius: 3,
+                                            spreadRadius: 1.1,
+                                            offset: Offset(0.0, 0.0),
+                                          )
+                                        ]),
+                                    child: Stack(
+                                      children: [
+                                        Align(
+                                          alignment: Alignment.topRight,
+                                          child: StatusWidget(
+                                              status: histryPro.getAllOrdersByIdResponse!.data![index].status.toString(),
 
-                                          ListViewInfoWidget(
-                                              title: 'Selected Payment Type: ',
-                                              info: historyPro.getAllOrdersByIdResponse!.data![index].selectedPaymentType),
-                                          ListViewInfoWidget(
-                                              title: 'Pickup Address : ',
-                                              info: histryPro.getAllOrdersByIdResponse!.data![index].pickUpAddress.toString()),
-                                          ListViewInfoWidget(
-                                              title: 'No of cloths: ',
-                                              info: histryPro.getAllOrdersByIdResponse!.data![index].orderDetails!.length.toString()),
-                                          ListViewInfoWidget(
-                                              title: 'Payment: ',
-                                              info: histryPro.getAllOrdersByIdResponse!.data![index].paymentStatus.toString()),
-                                          ListViewInfoWidget(
-                                              title: 'time: ',
-                                              info:"${DateTime.now().difference( histryPro.getAllOrdersByIdResponse!.data![index].createdAt!).inDays.toString()}  Day(s) Ago",
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                              backgroundColor: historyColor),
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(
+                                              height: 15,
+                                            ),
+                                            ListViewInfoWidget(
+                                                title: 'Order No',
+                                                info:  histryPro.getAllOrdersByIdResponse!.data![index].id.toString()),
+                                            ListViewInfoWidget(
+                                                title: 'Total Payment: ',
+                                                info:  histryPro.getAllOrdersByIdResponse!.data![index].totalPrice.toString()),
+                                            ListViewInfoWidget(
+                                                title: 'Selected Payment Type: ',
+                                                info: historyPro.getAllOrdersByIdResponse!.data![index].selectedPaymentType),
+                                            ListViewInfoWidget(
+                                                title: 'Pickup Address : ',
+                                                info: histryPro.getAllOrdersByIdResponse!.data![index].pickUpAddress.toString()),
+                                            ListViewInfoWidget(
+                                                title: 'No of cloths: ',
+                                                info: histryPro.getAllOrdersByIdResponse!.data![index].orderDetails!.length.toString()),
+                                            ListViewInfoWidget(
+                                                title: 'Payment: ',
+                                                info: histryPro.getAllOrdersByIdResponse!.data![index].paymentStatus.toString()),
+                                            ListViewInfoWidget(
+                                                title: 'time: ',
+                                                info:"${DateTime.now().difference( histryPro.getAllOrdersByIdResponse!.data![index].createdAt!).inDays.toString()}  Day(s) Ago",
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              )
+                            )
 
 ///
                             : historyType == histryPro.getAllOrdersByIdResponse!.data![index].status.toString()
-                                ? InkWell(
+                                ?
+                          InkWell(
                             onTap: (){
                               pickupPro.data= histryPro.getAllOrdersByIdResponse!.data![index];
                               Get.to(OrderDetails());

@@ -53,7 +53,7 @@ class _PaymentDropdownState extends State<PaymentDropdown> {
                       Icons.qr_code_scanner,
                     ),
                     onPressed: () {
-                      pickupPro.isCreate=true;
+                      pickupPro.isCreate = true;
                       Get.to(ScannerScreen());
                     },
                   ),
@@ -123,14 +123,9 @@ class _PaymentDropdownState extends State<PaymentDropdown> {
                 CustomButton(
                   label: 'Book Order',
                   onPressed: () async {
-
-
-
                     bool trueData = await pickupPro.checkValidationForbooking();
                     if (trueData) {
-                      Get.back();
-                      Get.back();
-                      Get.back();
+
                     }
                   },
                 ),

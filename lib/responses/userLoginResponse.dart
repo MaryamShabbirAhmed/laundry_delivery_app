@@ -40,10 +40,11 @@ class Data {
   int? id;
   String? name;
   String? mobileNumber;
+  String? address;
   dynamic emiratesIdNo;
-  dynamic dob;
+  String? dob;
   String? loginId;
-  String? profileImage;
+  dynamic profileImage;
   bool? isActive;
   String? userType;
   DateTime? createdAt;
@@ -53,6 +54,7 @@ class Data {
     this.id,
     this.name,
     this.mobileNumber,
+    this.address,
     this.emiratesIdNo,
     this.dob,
     this.loginId,
@@ -67,6 +69,7 @@ class Data {
     id: json["id"],
     name: json["name"],
     mobileNumber: json["mobileNumber"],
+    address: json["address"],
     emiratesIdNo: json["emiratesIdNo"],
     dob: json["dob"],
     loginId: json["loginId"],
@@ -81,6 +84,7 @@ class Data {
     "id": id,
     "name": name,
     "mobileNumber": mobileNumber,
+    "address": address,
     "emiratesIdNo": emiratesIdNo,
     "dob": dob,
     "loginId": loginId,

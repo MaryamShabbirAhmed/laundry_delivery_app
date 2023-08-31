@@ -41,7 +41,7 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
         centerTitle: true,
         backgroundColor: secondaryColor,
         title: Text(
-          'Pickup Cloths',
+          'Booking Details',
           style: TextStyle(
               color: whiteColor, fontSize: 17, fontWeight: FontWeight.w500),
         ),
@@ -57,7 +57,11 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
           children: [
             Container(
               child: ExpansionTile(
-                title: Text('Service Areas'),
+                title: Text(
+                    pickupPro.pickupLocationController.text.isNotEmpty?
+                    pickupPro.pickupLocationController.text
+                        :
+                    'Service Areas'),
                 onExpansionChanged: (expanded) {
                   setState(() {
                     _isExpanded = expanded;
@@ -78,6 +82,9 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
                             return InkWell(
                               onTap: (){
                                 pickupPro.pickupLocationController.text=area.address.toString();
+                                setState(() {
+
+                                });
                               },
 
 
