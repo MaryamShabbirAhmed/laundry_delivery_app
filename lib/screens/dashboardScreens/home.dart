@@ -230,8 +230,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         backgroundColor: orangeDarkColor,
                         title: 'Old Pending Pickups',
                         icon: 'assets/dashboard_images/oldPickup.png',
-                        number:  historyPro.getDashboardOrdersResponse !=null ?
-                        historyPro.getDashboardOrdersResponse!.data!.oldOrders!.toString(): '0',
+                        number: historyPro.getDashboardOrdersResponse?.data?.deliveredOrders?.toString()?? '0',
                       ),
                     ],
                   ),

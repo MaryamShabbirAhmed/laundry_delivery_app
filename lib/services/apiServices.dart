@@ -70,4 +70,21 @@ request.body=jsonEncode(fields);
    }
  }
 
+
+ static Future<String?> post(String path, {dynamic body}) async {
+   try {
+     final response = await http.post(Uri.parse('$baseURL$path'),
+         headers: headers, body: json.encode(body));
+     print(response.body);
+     if (response.statusCode == 200) {
+       return response.body;
+     } else {
+       print(response.body);
+       return null;
+     }
+   } catch (e) {
+     return null;
+   }
+ }
+
 }

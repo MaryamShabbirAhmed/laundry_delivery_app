@@ -11,6 +11,8 @@ import '../../responses/getAllItemsResponse.dart';
 import 'orderPayment.dart';
 
 class LaundrySelectionScreen extends StatefulWidget {
+  const LaundrySelectionScreen({super.key});
+
   @override
   _LaundrySelectionScreenState createState() => _LaundrySelectionScreenState();
 }
@@ -148,7 +150,7 @@ class _LaundrySelectionScreenState extends State<LaundrySelectionScreen> {
 class LaundryItemWidget extends StatelessWidget {
   final Datum laundryItem;
 
-  LaundryItemWidget({required this.laundryItem});
+  LaundryItemWidget({super.key, required this.laundryItem});
 
   @override
   Widget build(BuildContext context) {

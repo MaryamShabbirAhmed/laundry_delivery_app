@@ -49,7 +49,7 @@ class _OrderDetailsState extends State<OrderDetails> {
           ),
         ),
         body: SingleChildScrollView(
-          child: pickupPro.data != null
+          child: pickupPro.orderData != null
               ? Column(
                   children: [
                     Padding(
@@ -57,13 +57,13 @@ class _OrderDetailsState extends State<OrderDetails> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             'Created By: ',
                             style: TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 16
                             ),
                           ),
-                          Text('  ${pick.data!.createdBy ?? ''} ', style: TextStyle(fontSize: 16),),
+                          Text('  ${pick.orderData!.createdBy ?? ''} ', style: const TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
@@ -80,14 +80,14 @@ class _OrderDetailsState extends State<OrderDetails> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             'Booking Date: ',
                             style: TextStyle(
                               fontWeight: FontWeight.w500,fontSize: 16
                             ),
                           ),
                           Text(
-                              '${pick.data!.bookingDate!.month.toString() + '-' + pick.data!.bookingDate!.day.toString() + '-' + pick.data!.bookingDate!.year.toString() ?? ''} ', style: TextStyle(fontSize: 16),),
+                              '${pick.orderData?.bookingDate??""} ', style: const TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
@@ -104,16 +104,14 @@ class _OrderDetailsState extends State<OrderDetails> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             'Delivery Date: ',
                             style: TextStyle(
                               fontWeight: FontWeight.w500,fontSize: 16
                             ),
                           ),
                           Text(
-                              '${pick.data!.deliveryDate!.month.toString() + '-'
-                                  + pick.data!.deliveryDate!.day.toString() + '-'
-                                  + pick.data!.deliveryDate!.year.toString() ?? ''} ', style: TextStyle(fontSize: 16),),
+                              '${pick.orderData?.deliveryDate} ', style: const TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
@@ -130,13 +128,13 @@ class _OrderDetailsState extends State<OrderDetails> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             'total Price: ',
                             style: TextStyle(
                               fontWeight: FontWeight.w500,fontSize: 16
                             ),
                           ),
-                          Text('  ${pick.data!.totalPrice ?? ''} ', style: TextStyle(fontSize: 16),),
+                          Text('  ${pick.orderData?.totalPrice ?? ''} ', style: const TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
@@ -153,7 +151,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
+                          const Row(
                             children: [
                               Text(
                                 'payment Status: ',
@@ -171,8 +169,8 @@ class _OrderDetailsState extends State<OrderDetails> {
                               },
                               child: Text(
                                   ' ${pickupPro.paymentStatus != '' ?
-                                  pickupPro.paymentStatus : pick.data!.paymentStatus ?? ''} ',
-                                style: TextStyle(fontSize: 16),),)
+                                  pickupPro.paymentStatus : pick.orderData!.paymentStatus ?? ''} ',
+                                style: const TextStyle(fontSize: 16),),)
                         ],
                       ),
                     ),
@@ -189,7 +187,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
+                          const Row(
                             children: [
                               Text(
                                 'Collected Payment: ',
@@ -208,7 +206,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                               child: Text(
                                   '  ${pickupPro.payment != '0' ?
                                   pickupPro.collectedAmountController.text :
-                                  pick.data!.collectedPayment ?? ''} ', style: TextStyle(fontSize: 16),),),
+                                  pick.orderData!.collectedPayment ?? ''} ', style: const TextStyle(fontSize: 16),),),
                         ],
                       ),
                     ),
@@ -225,14 +223,14 @@ class _OrderDetailsState extends State<OrderDetails> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             'isPaid: ',
                             style: TextStyle(
                               fontWeight: FontWeight.w500,fontSize: 16
                             ),
                           ),
                           Text(
-                              '  ${pick.data!.isPaid! ? 'Paid' : 'Not Paid'} ', style: TextStyle(fontSize: 16),),
+                              '  ${pick.orderData!.isPaid! ? 'Paid' : 'Not Paid'} ', style: const TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
@@ -249,7 +247,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
+                          const Row(
                             children: [
                               Text(
                                 'Selected Payment Type: ',
@@ -266,7 +264,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                               },
                               child: Text(
                                   ' ${pickupPro.paymentType != '' ? pickupPro.paymentType :
-                                  pick.data!.selectedPaymentType ?? ''} ', style: TextStyle(fontSize: 16),),),
+                                  pick.orderData!.selectedPaymentType ?? ''} ', style: const TextStyle(fontSize: 16),),),
                         ],
                       ),
                     ),
@@ -283,7 +281,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
+                          const Row(
                             children: [
                               Text(
                                 'Order Status: ',
@@ -300,7 +298,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                               },
                               child: Text(
                                   ' ${pickupPro.orderStatus != ''
-                                      ? pickupPro.orderStatus : pick.data!.status ?? ''} ', style: TextStyle(fontSize: 16),),),
+                                      ? pickupPro.orderStatus : pick.orderData!.status ?? ''} ', style: const TextStyle(fontSize: 16),),),
                         ],
                       ),
                     ),
@@ -317,13 +315,13 @@ class _OrderDetailsState extends State<OrderDetails> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             'Reference Id: ',
                             style: TextStyle(
                               fontWeight: FontWeight.w500,fontSize: 16
                             ),
                           ),
-                          Text('  ${pick.data!.referenceId ?? ''} ', style: TextStyle(fontSize: 16),),
+                          Text('  ${pick.orderData!.referenceId ?? ''} ', style: const TextStyle(fontSize: 16),),
                         ],
                       ),
                     ),
@@ -441,7 +439,7 @@ class _OrderDetailsState extends State<OrderDetails> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
             ),
           ],
         );
@@ -454,12 +452,13 @@ class _OrderDetailsState extends State<OrderDetails> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Add Collected Amount'),
+          title: const Text('Add Collected Amount'),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 InputFieldCustom(
+
                   label: 'Add Amount',
                   borderColor: secondaryColor,
                   controller: pickupPro.collectedAmountController,
@@ -495,7 +494,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      "Cancle",
+                      "Cancel",
                       style: TextStyle(color: redColor),
                     ),
                   ),
@@ -512,7 +511,7 @@ class _OrderDetailsState extends State<OrderDetails> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Add Collected Amount'),
+          title: const Text('Add Collected Amount'),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -553,7 +552,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      "Cancle",
+                      "Cancel",
                       style: TextStyle(color: redColor),
                     ),
                   ),

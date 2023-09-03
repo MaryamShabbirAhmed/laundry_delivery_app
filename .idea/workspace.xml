@@ -5,12 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5cd7b8c-2cc1-4df6-b010-215d7b67449f" name="Changes" comment="barcode issue resolved&#10;service areas implemented&#10;search option modified">
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/providers/authProvider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/providers/authProvider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/providers/historyDataProvider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/providers/historyDataProvider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/providers/pickupProvider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/providers/pickupProvider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/responses/getDashboardDetailsResponse.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/responses/getDashboardDetailsResponse.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/customerScreens/search customer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/customerScreens/search customer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/dashboardScreens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/dashboardScreens/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/historyScreens/history.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/historyScreens/history.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/historyScreens/historyTiles.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/historyScreens/historyTiles.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/historyScreens/orderDetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/historyScreens/orderDetails.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/pickupScreens/laundrySelectionScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/pickupScreens/laundrySelectionScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/pickupScreens/orderPayment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/pickupScreens/orderPayment.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/pickupScreens/pickupCloth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/pickupScreens/pickupCloth.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/profileScreens/myProfile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/profileScreens/myProfile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/userAuthScreens/LoginScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/userAuthScreens/LoginScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/userAuthScreens/signupScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/userAuthScreens/signupScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/viewList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/viewList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/apiServices.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/apiServices.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/widgets/statusWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/widgets/statusWidget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/smart_auth" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/smart_auth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,9 +72,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/Documents/flutter/bin/cache/pkg/sky_engine/lib/core/date_time.dart" root0="SKIP_INSPECTION" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -47,24 +83,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Inaam/StudioProjects/laundry_delivery&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;dart.settings&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "C:/Users/Inaam/StudioProjects/laundry_delivery",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "flutter.settings",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Inaam\StudioProjects\laundry_delivery\assets\dashboard_images" />
@@ -333,10 +369,55 @@
           <line>110</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/providers/pickupProvider.dart</url>
+          <line>207</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/providers/pickupProvider.dart</url>
+          <line>210</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/pickupScreens/orderPayment.dart</url>
+          <line>118</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/providers/pickupProvider.dart</url>
+          <line>332</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/providers/pickupProvider.dart</url>
+          <line>336</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/providers/pickupProvider.dart</url>
+          <line>322</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/historyScreens/orderDetails.dart</url>
+          <line>403</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/historyScreens/orderDetails.dart</url>
+          <line>405</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="dart-exception" />
       </default-breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="FlutterRunConfigurationType">
+        <watch expression=" if (pickupBookingDateController.text.isEmpty ||&#10;        pickupBookingTimeController.text.isEmpty ||&#10;        pickupDeliveryDateController.text.isEmpty ||&#10;        pickupDeliveryTimeController.text.isEmpty ||&#10;        pickupLocationController.text.isEmpty ||&#10;        userID == null ||&#10;        collectedAmountController.text.isEmpty ||&#10;        selectedMethod == null ||&#10;        selectedItemsList == []) {" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

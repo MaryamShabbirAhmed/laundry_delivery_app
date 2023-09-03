@@ -43,7 +43,7 @@ class _SignupScreenState extends State<SignupScreen> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               authPro.isDriver ?
@@ -52,14 +52,14 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: Image.asset(
                     'assets/images/logo.png',
                   )):
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: IntlPhoneField(
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
@@ -71,7 +71,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     labelText: 'Phone Number',
-                    contentPadding: EdgeInsets.symmetric(vertical: 13.0),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 13.0),
                   ),
                   initialCountryCode: 'US', // Initial country code
                   onChanged: (phone) {
@@ -99,25 +99,10 @@ class _SignupScreenState extends State<SignupScreen> {
                 controller: authPro.emailController,
                 decoration: authPro.buildInputDecoration('Enter your email'),
               ),
-              InputFieldCustom(
-                borderColor: secondaryColor,
-                readOnly: true,
-                controller: authData.dobController,
-                label: 'Date of Birth',
-                hint: 'Select Date',
-                suffix: IconButton(
-                    onPressed: () async {
-                      await pickupPro.selectDate(context);
-                      authData.dobController.text =
-                      "${pickupPro.selectedDate.toLocal()}".split(' ')[0];
-                      setState(() {});
-                    },
-                    icon: Icon(Icons.calendar_month, color: borderGreyColor)),
-              ),
 
               if(authPro.isDriver)
               Padding(
-                padding: EdgeInsets.only(left: 8.0, right: 8),
+                padding: const EdgeInsets.only(left: 8.0, right: 8),
                 child: AppTextFieldPassword(
                   label: 'Enter Password',
                   error: false,
@@ -126,7 +111,7 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
               if(authPro.isDriver)
               Padding(
-                padding: EdgeInsets.only(left: 8.0, right: 8),
+                padding: const EdgeInsets.only(left: 8.0, right: 8),
                 child: AppTextFieldPassword(
                   label: 'Re-Enter Password',
                   error: false,
@@ -154,7 +139,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   }
                 },
               ),
-              SizedBox(height: 20,)
+              const SizedBox(height: 20,)
             ],
           ),
         ),

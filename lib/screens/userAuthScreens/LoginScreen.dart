@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Scaffold(
         body: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Container(
@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Image.asset(
                   'assets/images/logo.png',
                 )),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             InputFieldCustom
@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: authPro.buildInputDecoration('Enter your email'),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 8.0, right: 8),
+              padding: const EdgeInsets.only(left: 8.0, right: 8),
               child: AppTextFieldPassword(
                 label: 'Enter Password',
                 error: false,
@@ -57,12 +57,12 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(),
+                const SizedBox(),
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: InkWell(
                       onTap: () {},
-                      child: Text(
+                      child: const Text(
                         'Forgot Password?',
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w500),

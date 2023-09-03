@@ -41,63 +41,69 @@ class _SearchCustomerState extends State<SearchCustomer> {
             icon: Icon(Icons.arrow_back_ios, color: whiteColor, size: 15),
           ),
         ),
-        body: Stack(
+        body: Column(
           children: [
-            Align(
-              alignment: Alignment.topCenter,
-              child: Column(
-                children: [
-                  Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: InputFieldCustom(
-                        borderColor: secondaryColor,
-                        controller: pickupPro.searcKeyWord,
-                      )),
-                  pickupPro.getCustomerSearchResponse != null &&
-                          pickupPro.getCustomerSearchResponse!.data!.length != 0
-                      ? Container(
-                          height: Get.height / 1.8,
-                          child: SingleChildScrollView(
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: InputFieldCustom(
+                          borderColor: secondaryColor,
+                          hint: "Search By address",
+                          controller: pickupPro.searchByAddress,
+                        )),
+                           Padding(
+                               padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: InputFieldCustom(
+                          hint: "Search By mobile",
+                          borderColor: secondaryColor,
+                          controller: pickupPro.searchByMobile,
+                        )),
+                           Padding(
+                               padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: InputFieldCustom(
+                          hint: "Search By name",
+                          borderColor: secondaryColor,
+                          controller: pickupPro.searchByName,
+                        )),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    pickupPro.getCustomerSearchResponse != null &&
+                            pickupPro.getCustomerSearchResponse!.data!.isNotEmpty
+                        ? SizedBox(
+                            height: Get.height / 1.8,
                             child: Column(
                               children: [
-                                Container(
+                                SizedBox(
                                   height: Get.height / 1.8,
                                   child: ListView.builder(
-                                      itemCount: pickupPro
-                                                  .getCustomerSearchResponse !=
-                                              null
-                                          ? pickupPro.getCustomerSearchResponse!
-                                                  .data!.length ??
-                                              0
-                                          : 0,
+                                      itemCount: pickupPro.getCustomerSearchResponse != null ? pickupPro.getCustomerSearchResponse?.data?.length ?? 0 : 0,
                                       itemBuilder: (context, index) {
 
                                         return InkWell(
-                                          onTap: () {
-                                            pickupPro
-                                                    .pickupCustomerNameController
-                                                    .text =
-                                                pickupPro
-                                                    .getCustomerSearchResponse!
-                                                    .data![index]
-                                                    .name
-                                                    .toString();
-                                            pickupPro.pickupContactController
-                                                    .text =
-                                                pickupPro
-                                                    .getCustomerSearchResponse!
-                                                    .data![index]
-                                                    .mobileNumber
-                                                    .toString();
-                                            pickupPro.userID = pickupPro
-                                                    .getCustomerSearchResponse!
-                                                    .data![index]
-                                                    .id
-                                                    .toString() ??
-                                                '';
-                                            pickupPro.searcKeyWord.clear();
-                                            pickupPro.getCustomerSearchResponse=null;
-                                            Get.to(PickupClothScreen());
+                                          onTap: (){
+                                            onItemTap(index);
                                           },
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
@@ -138,7 +144,7 @@ class _SearchCustomerState extends State<SearchCustomer> {
                                                                       : ''
                                                                   : ''
                                                               : '',
-                                                          style: TextStyle(
+                                                          style: const TextStyle(
                                                               fontSize: 16),
                                                         ),
                                                         Text(
@@ -162,7 +168,7 @@ class _SearchCustomerState extends State<SearchCustomer> {
                                                                       : ''
                                                                   : ''
                                                               : '',
-                                                          style: TextStyle(
+                                                          style: const TextStyle(
                                                               fontSize: 16),
                                                         ),
                                                       ],
@@ -193,7 +199,7 @@ class _SearchCustomerState extends State<SearchCustomer> {
                                                                   : 'No address Found'
                                                               : 'No address Found'
                                                           : 'No address Found',
-                                                      style: TextStyle(
+                                                      style: const TextStyle(
                                                           fontSize: 16),
                                                     ),
                                                   ),
@@ -206,39 +212,65 @@ class _SearchCustomerState extends State<SearchCustomer> {
                                 ),
                               ],
                             ),
-                          ),
-                        )
-                      : Center(
-                          child: Text('Search by Name, Address or mobile No'),
-                        )
-                ],
+                          )
+                        : const Center(
+                            child: Text('Search by Name, Address or mobile No'),
+                          )
+                  ],
+                ),
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  CustomButton(
-                    label: 'Search',
-                    onPressed: () async {
-                      pickupPro.searchCustomer();
-                    },
-                  ),
-                  CustomButton(
-                    label: 'Add New Customer',
-                    colorButton: greenishColor,
-                    onPressed: () async {
-                      authPro.isDriver = false;
-                      Get.to(SignupScreen());
-                    },
-                  ),
-                ],
-              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                CustomButton(
+                  label: 'Search',
+                  onPressed: () async {
+                    pickupPro.searchCustomer();
+                  },
+                ),
+                CustomButton(
+                  label: 'Add New Customer',
+                  colorButton: greenishColor,
+                  onPressed: () async {
+                    authPro.isDriver = false;
+                    Get.to(SignupScreen());
+                  },
+                ),
+              ],
             ),
           ],
         ),
       ));
     });
+  }
+
+  void onItemTap(int index) {
+    pickupPro
+        .pickupCustomerNameController
+        .text =
+        pickupPro
+            .getCustomerSearchResponse!
+            .data![index]
+            .name
+            .toString();
+    pickupPro.pickupContactController
+        .text =
+        pickupPro
+            .getCustomerSearchResponse!
+            .data![index]
+            .mobileNumber
+            .toString();
+    pickupPro.userID = pickupPro
+        .getCustomerSearchResponse!
+        .data![index]
+        .id
+        .toString() ??
+        '';
+    pickupPro.searchByName.clear();
+    pickupPro.searchByMobile.clear();
+    pickupPro.searchByAddress.clear();
+    pickupPro.getCustomerSearchResponse=null;
+    Get.to(PickupClothScreen());
   }
 }

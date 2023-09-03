@@ -55,69 +55,65 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              height: 200,
-              child:
-              ExpansionTile(
-                title: Text(
-                    pickupPro.pickupLocationController.text.isNotEmpty?
-                    pickupPro.pickupLocationController.text
-                        :
-                    'Service Areas'),
-                onExpansionChanged: (expanded) {
-                  setState(() {
-                    _isExpanded = expanded;
-                  });
-                },
-                children: [
-                  if (pickupPro.getServiceAreasResponse != null &&
-                      pickupPro.getServiceAreasResponse!.data != null)
-                    _isExpanded
-                        ? Container(
-                      // Wrap the list in a container to set the height when expanded
-                      height: 200,
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: pickupPro
-                              .getServiceAreasResponse!.data!
-                              .map((area) {
-                            return InkWell(
-                              onTap: (){
-                                pickupPro.pickupLocationController.text=area.address.toString();
-                                setState(() {
-
-                                });
-                              },
-
-
-                              child: ListTile(
-                                title: Text(
-                                  area.address.toString(),
-                                ),
-                              ),
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                    )
-                        : SingleChildScrollView(
-                      // Use a SingleChildScrollView without a height when not expanded
+            ExpansionTile(
+              title: Text(
+                  pickupPro.pickupLocationController.text.isNotEmpty?
+                  pickupPro.pickupLocationController.text
+                      :
+                  'Service Areas'),
+              onExpansionChanged: (expanded) {
+                setState(() {
+                  _isExpanded = expanded;
+                });
+              },
+              children: [
+                if (pickupPro.getServiceAreasResponse != null &&
+                    pickupPro.getServiceAreasResponse!.data != null)
+                  _isExpanded
+                      ? SizedBox(
+                    // Wrap the list in a container to set the height when expanded
+                    height: 200,
+                    child: SingleChildScrollView(
                       child: Column(
                         children: pickupPro
                             .getServiceAreasResponse!.data!
                             .map((area) {
-                          return ListTile(
-                            title: Text(
-                              area.address.toString(),
+                          return InkWell(
+                            onTap: (){
+                              pickupPro.pickupLocationController.text=area.address.toString();
+                              setState(() {
+
+                              });
+                            },
+
+
+                            child: ListTile(
+                              title: Text(
+                                area.address.toString(),
+                              ),
                             ),
                           );
                         }).toList(),
                       ),
-                    )
-                  else
-                    Container(),
-                ],
-              ),
+                    ),
+                  )
+                      : SingleChildScrollView(
+                    // Use a SingleChildScrollView without a height when not expanded
+                    child: Column(
+                      children: pickupPro
+                          .getServiceAreasResponse!.data!
+                          .map((area) {
+                        return ListTile(
+                          title: Text(
+                            area.address.toString(),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  )
+                else
+                  Container(),
+              ],
             ),
 
 

@@ -14,11 +14,15 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   bool checkUser=false;
-
-
 
   // This widget is the root of your application.
   @override
@@ -31,7 +35,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => HistoryProvider()),
       ],
-      child: GetMaterialApp(
+      child: const GetMaterialApp(
         title: 'Laundry Delivery',
         debugShowCheckedModeBanner: false,
         // theme: ThemeData(

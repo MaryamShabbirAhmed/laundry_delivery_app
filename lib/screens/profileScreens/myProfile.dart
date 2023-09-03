@@ -43,12 +43,12 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
               authPro.disposeController();
                 Get.offAll(LoginScreen());
               },
-              icon: Icon(Icons.logout))
+              icon: const Icon(Icons.logout))
         ],
         shadowColor: Colors.transparent,
         backgroundColor: secondaryColor,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
             Get.back();
           },
@@ -62,7 +62,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                 Container(
                   height: 123,
                   width: Get.width,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage(
                           'assets/images/backgroundProfilePage.png',
@@ -71,7 +71,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 50.0),
+                  padding: const EdgeInsets.only(top: 50.0),
                   child: Align(
                     alignment: Alignment.topCenter,
                     child: Column(
@@ -82,7 +82,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
                             border: Border.all(color: whiteColor, width: 2),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                                 image: AssetImage(
                                   'assets/images/profile.jpg',
                                 ),
@@ -106,7 +106,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                         ),
                         Text(
                           StorageCRUD.getUser().data!.name.toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w500),
                         ),
                         Text(
@@ -119,7 +119,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                           direction: Axis.horizontal,
                           allowHalfRating: true,
                           itemCount: 5,
-                          itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
+                          itemPadding: const EdgeInsets.symmetric(horizontal: 1.0),
                           ratingWidget: RatingWidget(
                             full: Icon(
                               Icons.star,
@@ -176,9 +176,9 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                     ),
 
                     Padding(
-                      padding: EdgeInsets.only(left:8.0,right:8),
+                      padding: const EdgeInsets.only(left:8.0,right:8),
                       child: IntlPhoneField(
-                          flagsButtonPadding:EdgeInsets.only(top:20),
+                          flagsButtonPadding:const EdgeInsets.only(top:20),
                         decoration: InputDecoration(
 
                           suffix: IconButton(onPressed: () {  }, icon: Padding(
@@ -186,15 +186,15 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                             child: Icon(Icons.edit, size: 18,color: secondaryColor,),
                           ),),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.transparent,width: 1.0),
+                            borderSide: const BorderSide(color: Colors.transparent,width: 1.0),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.transparent, width: 1.0),
+                            borderSide: const BorderSide(color: Colors.transparent, width: 1.0),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           // labelText: 'Phone Number',
-                          contentPadding: EdgeInsets.symmetric(vertical: 13.0),
+                          contentPadding: const EdgeInsets.symmetric(vertical: 13.0),
                         ),
                         initialCountryCode: 'US', // Initial country code
                         initialValue: authPro.userPhoneNumberController.text,
@@ -210,7 +210,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 15.0, right: 15),
+                  padding: const EdgeInsets.only(left: 15.0, right: 15),
                   child: Container(
                     height: 1,
                     color: borderGreyColor,
@@ -229,20 +229,14 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                 //   controller: authPro.userPhoneNumberController,
                 // ),
                 Padding(
-                  padding: EdgeInsets.only(left: 15.0, right: 15),
+                  padding: const EdgeInsets.only(left: 15.0, right: 15),
                   child: Container(
                     height: 1,
                     color: borderGreyColor,
                   ),
                 ),
-                ProfileTile(
-                  isCalender: true,
-                  icon: Icons.calendar_today,
-                  title: 'DATE OF BIRTH',
-                  controller: authPro.dobController,
-                ),
                 Padding(
-                  padding: EdgeInsets.only(left: 15.0, right: 15),
+                  padding: const EdgeInsets.only(left: 15.0, right: 15),
                   child: Container(
                     height: 1,
                     color: borderGreyColor,
@@ -326,37 +320,13 @@ class ProfileTile extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
+              const Row(
                 children: [
                   Expanded(
                     flex: 1,
                     child: SizedBox(),
                   ),
-                  Expanded(
-                      flex: 8,
-                      child: InputFieldCustom(
-                        readOnly: readOnly,
-                        borderColor: Colors.transparent,
-                        suffix: isEdit
-                            ? Align(
-                                alignment: Alignment.bottomRight,
-                                child: IconButton(
-                                    onPressed: () async {
-                                      if (isCalender) {
-                                        await pickupPro.selectDate(context);
-                                        authPro.dobController.text =
-                                            "${pickupPro.selectedDate.toLocal()}"
-                                                .split(' ')[0];
-                                        authPro.notifyListeners();
-                                      }
-                                    },
-                                    icon: Icon(Icons.edit,
-                                        size: 18, color: primaryColor)),
-                              )
-                            : SizedBox(),
-                        labelColor: darkGreyColor,
-                        controller: controller,
-                      )),
+
                 ],
               ),
             ],

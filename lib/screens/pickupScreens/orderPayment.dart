@@ -14,8 +14,8 @@ class PaymentDropdown extends StatefulWidget {
 }
 
 class _PaymentDropdownState extends State<PaymentDropdown> {
-  List<PaymentMethod> _paymentMethods = MethodData.methods;
-
+  var list = ['Cash', 'Credit Card', 'Online Mode'];
+int selected=-1;
   @override
   Widget build(BuildContext context) {
     return Consumer<PickupProvider>(builder: (context, pick, child) {
@@ -44,30 +44,30 @@ class _PaymentDropdownState extends State<PaymentDropdown> {
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                InputFieldCustom(
-                  borderColor: secondaryColor,
-                  label: 'Enter Reference No:',
-                  controller: pickupPro.referenceNoController,
-                  suffix: IconButton(
-                    icon: Icon(
-                      Icons.qr_code_scanner,
-                    ),
-                    onPressed: () {
-                      pickupPro.isCreate = true;
-                      Get.to(ScannerScreen());
-                    },
-                  ),
-                ),
+                // InputFieldCustom(
+                //   borderColor: secondaryColor,
+                //   label: 'Enter Reference No:',
+                //   controller: pickupPro.referenceNoController,
+                //   suffix: IconButton(
+                //     icon: const Icon(
+                //       Icons.qr_code_scanner,
+                //     ),
+                //     onPressed: () {
+                //       pickupPro.isCreate = true;
+                //       Get.to(const ScannerScreen());
+                //     },
+                //   ),
+                // ),
                 InputFieldCustom(
                   label: 'Enter Collected Amount',
                   borderColor: secondaryColor,
                   controller: pickupPro.collectedAmountController,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Text(
                     'Select Payment Module',
                     style: TextStyle(
@@ -76,57 +76,48 @@ class _PaymentDropdownState extends State<PaymentDropdown> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(16.0),
-                  child: SingleChildScrollView(
-                    child: ExpansionPanelList(
-                      elevation: 1,
-                      expandedHeaderPadding: EdgeInsets.all(0),
-                      expansionCallback: (int index, bool isExpanded) {
-                        setState(() {
-                          _paymentMethods[index].isExpanded = !isExpanded;
-                        });
-                      },
-                      children: _paymentMethods
-                          .map<ExpansionPanel>((PaymentMethod method) {
-                        return ExpansionPanel(
-                          headerBuilder:
-                              (BuildContext context, bool isExpanded) {
-                            return ListTile(
-                              title:
-                                  Text(pickupPro.selectedMethod ?? method.name),
-                            );
-                          },
-                          body: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16.0),
-                            child: Column(
-                              children:
-                                  method.options.map<Widget>((String option) {
-                                return ListTile(
-                                  title: Text(option),
-                                  onTap: () {
-                                    setState(() {
-                                      pickupPro.selectedMethod = option;
-
-                                      method.isExpanded = false;
-                                    });
-                                  },
-                                );
-                              }).toList(),
+                  width: Get.width,
+                  child: Column(
+                    children: List.generate(list.length, (index) {
+                      return Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: InkWell(
+                              onTap: (){
+                                setState(() {
+                                  selected=index;
+                                  pickupPro.selectedMethod = list[index];
+                                });
+                              },
+                              child: Container(
+                                width: Get.width*0.9,
+                                decoration: BoxDecoration(
+                                  color: index==selected?Colors.blue:Colors.transparent,
+                                  border: Border.all(color: Colors.blue),
+                                  borderRadius: BorderRadius.circular(8)
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 20),
+                                  child: Text(list[index],style: TextStyle(
+                                    color: selected==index?Colors.white:Colors.black
+                                  ),),
+                                ),
+                              ),
                             ),
                           ),
-                          isExpanded: method.isExpanded,
-                        );
-                      }).toList(),
-                    ),
+                        ],
+                      );
+                    }),
                   ),
                 ),
                 CustomButton(
                   label: 'Book Order',
                   onPressed: () async {
                     bool trueData = await pickupPro.checkValidationForbooking();
-                    if (trueData) {
-
-                    }
+                    if (trueData) {}
                   },
                 ),
               ],
@@ -134,25 +125,4 @@ class _PaymentDropdownState extends State<PaymentDropdown> {
       );
     });
   }
-}
-
-class PaymentMethod {
-  final String name;
-  final List<String> options;
-  bool isExpanded;
-
-  PaymentMethod({
-    required this.name,
-    required this.options,
-    this.isExpanded = false,
-  });
-}
-
-class MethodData {
-  static List<PaymentMethod> methods = [
-    PaymentMethod(
-      name: 'Select Payment Mode',
-      options: ['Cash', 'Credit Card', 'Online Mode'],
-    ),
-  ];
 }

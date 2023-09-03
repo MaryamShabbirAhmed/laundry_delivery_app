@@ -1,10 +1,5 @@
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:laundry_delivery/screens/dashboardScreens/dashboard.dart';
 import 'package:laundry_delivery/services/apiServices.dart';
 import 'package:laundry_delivery/services/apiURL.dart';
 import 'package:laundry_delivery/utils/widgets/snackbars.dart';
@@ -17,7 +12,6 @@ class AuthProvider extends ChangeNotifier {
   TextEditingController emailController = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController repassword = TextEditingController();
-  TextEditingController dobController = TextEditingController();
   TextEditingController userNameController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController userPhoneNumberController = TextEditingController();
@@ -97,7 +91,7 @@ bool check=StorageCRUD.box.hasData(StorageKeys.userData);
       'mobileNumber': userPhoneNumberController.text,
       'address': addressController.text,
       'userType': isDriver?'Driver':'Customer',
-      'password': password.text??''
+      'password': password.text
     };
 
     String response = await ApiServices.postMethod(fields, signupURL);
@@ -159,7 +153,6 @@ bool check=StorageCRUD.box.hasData(StorageKeys.userData);
     userPhoneNumberController.text=StorageCRUD.getUser().data!.mobileNumber.toString();
     userNameController.text=StorageCRUD.getUser().data!.name.toString();
     emailController.text=StorageCRUD.getUser().data!.loginId.toString();
-    dobController.text=StorageCRUD.getUser().data!.dob=='null'? '':StorageCRUD.getUser().data!.dob.toString();
     // password.text=StorageCRUD.getUser().data!.pass.toString();
 
 
@@ -205,7 +198,6 @@ bool check=StorageCRUD.box.hasData(StorageKeys.userData);
     Map<String, String> fields = {
       'userId': StorageCRUD.getUser().data!.id.toString(),
       'name': userNameController.text,
-      'dob': dobController.text,
       'mobileNumber': userPhoneNumberController.text,
       'address': addressController.text,
 
