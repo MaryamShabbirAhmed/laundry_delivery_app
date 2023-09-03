@@ -267,15 +267,13 @@ class PickupProvider extends ChangeNotifier {
   Future<bool> getOrderByRefId({String? displayValue}) async {
     refCode = displayValue;
 
-    String response = await ApiServices.getMethod(
-        getOrderByRefIdURL + '?referenceId=${displayValue}');
+    String response = await ApiServices.getMethod('$getOrderByRefIdURL?referenceId=${displayValue}');
 
     if (response.isEmpty) {
       return false;
     }
     getOrderByRefIdResponse = getOrderByRefIdResponseFromJson(response);
 
-    logger.i(getOrderByRefIdResponse!.data.toString());
 
     if (getOrderByRefIdResponse!.data == null) {
       errorSnackBar('Error', 'No Data Found!');

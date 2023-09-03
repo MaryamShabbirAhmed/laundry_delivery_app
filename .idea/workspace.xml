@@ -4,52 +4,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5cd7b8c-2cc1-4df6-b010-215d7b67449f" name="Changes" comment="barcode issue resolved&#10;service areas implemented&#10;search option modified">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+    <list default="true" id="c5cd7b8c-2cc1-4df6-b010-215d7b67449f" name="Changes" comment="code optimization">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/providers/authProvider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/providers/authProvider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/providers/historyDataProvider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/providers/historyDataProvider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/providers/pickupProvider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/providers/pickupProvider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/responses/getDashboardDetailsResponse.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/responses/getDashboardDetailsResponse.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/customerScreens/search customer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/customerScreens/search customer.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/dashboardScreens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/dashboardScreens/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/historyScreens/history.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/historyScreens/history.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/historyScreens/historyTiles.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/historyScreens/historyTiles.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/historyScreens/orderDetails.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/historyScreens/orderDetails.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/pickupScreens/laundrySelectionScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/pickupScreens/laundrySelectionScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/pickupScreens/orderPayment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/pickupScreens/orderPayment.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/pickupScreens/pickupCloth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/pickupScreens/pickupCloth.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/profileScreens/myProfile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/profileScreens/myProfile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/userAuthScreens/LoginScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/userAuthScreens/LoginScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/userAuthScreens/signupScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/userAuthScreens/signupScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/viewList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/viewList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services/apiServices.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/apiServices.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/widgets/statusWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/widgets/statusWidget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/path_provider_linux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/smart_auth" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/ephemeral/.plugin_symlinks/smart_auth" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/scannerScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/scannerScreen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +211,14 @@
       <option name="project" value="LOCAL‎" />
       <updated>1693491017153</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="code optimization">
+      <created>1693763319100</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1693763319100</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -314,61 +285,12 @@
     <MESSAGE value="barcode" />
     <MESSAGE value="barcode implemented" />
     <MESSAGE value="barcode issue resolved&#10;service areas implemented&#10;search option modified" />
-    <option name="LAST_COMMIT_MESSAGE" value="barcode issue resolved&#10;service areas implemented&#10;search option modified" />
+    <MESSAGE value="code optimization" />
+    <option name="LAST_COMMIT_MESSAGE" value="code optimization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/scannerScreen.dart</url>
-          <line>112</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/scannerScreen.dart</url>
-          <line>111</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/scannerScreen.dart</url>
-          <line>106</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/scannerScreen.dart</url>
-          <line>104</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/scannerScreen.dart</url>
-          <line>103</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/scannerScreen.dart</url>
-          <line>105</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/scannerScreen.dart</url>
-          <line>102</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/scannerScreen.dart</url>
-          <line>100</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/scannerScreen.dart</url>
-          <line>101</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/scannerScreen.dart</url>
-          <line>110</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/providers/pickupProvider.dart</url>
           <line>207</line>
@@ -386,17 +308,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/providers/pickupProvider.dart</url>
-          <line>332</line>
+          <line>330</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/providers/pickupProvider.dart</url>
-          <line>336</line>
+          <line>334</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/providers/pickupProvider.dart</url>
-          <line>322</line>
+          <line>320</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
