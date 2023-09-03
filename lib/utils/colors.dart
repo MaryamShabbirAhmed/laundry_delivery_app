@@ -4,6 +4,7 @@ Color primaryColor= Color(0xFF5D5FEF);
 Color secondaryColor= Color(0xFF5D5FEF);
 Color blackColor= Colors.black;
 Color borderGreyColor= Color(0xFFC9C9CA);
+Color darkGreyColor= Color(0xFF898989);
 Color greenColor= Color(0xFF00C414);
 Color greenLightColor= Color(0xFFF2FEF0);
 Color yellowColor= Color(0xFFFBFF3C);

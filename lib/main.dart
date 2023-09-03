@@ -1,45 +1,53 @@
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:laundry_delivery/providers/authProvider.dart';
 import 'package:laundry_delivery/providers/dashboardProvider.dart';
-import 'package:laundry_delivery/screens/dashboardScreens/dashboard.dart';
-import 'package:laundry_delivery/screens/dashboardScreens/home.dart';
+import 'package:laundry_delivery/providers/historyDataProvider.dart';
+import 'package:laundry_delivery/providers/pickupProvider.dart';
 import 'package:provider/provider.dart';
+import 'splashScreen.dart';
 
-import 'screens/pickupScreens/pickupCloth.dart';
-
-void main() {
+Future<void> main() async {
+  await GetStorage.init();
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-   MyApp({super.key});
+class MyApp extends StatefulWidget {
+  MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool checkUser=false;
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
 
-
-
-
     return MultiProvider(
-        providers: [
-      ChangeNotifierProvider(create: (_)=> DashboardProvider()),
-
-        ],
-    child:
-      MaterialApp(
+      providers: [
+        ChangeNotifierProvider(create: (_) => DashboardProvider()),
+        ChangeNotifierProvider(create: (_) => PickupProvider()),
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => HistoryProvider()),
+      ],
+      child: const GetMaterialApp(
         title: 'Laundry Delivery',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+        // theme: ThemeData(
+        //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        //   useMaterial3: true,
+        // ),
+        home: Scaffold(
+
+            body: SplashScreen()
+
         ),
-        home:  PickupClothScreen(),
       ),
     );
-
-
-
-
   }
 }
-
