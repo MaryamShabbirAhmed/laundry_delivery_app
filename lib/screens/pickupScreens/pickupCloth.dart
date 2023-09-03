@@ -56,7 +56,9 @@ class _PickupClothScreenState extends State<PickupClothScreen> {
         child: Column(
           children: [
             Container(
-              child: ExpansionTile(
+              height: 200,
+              child:
+              ExpansionTile(
                 title: Text(
                     pickupPro.pickupLocationController.text.isNotEmpty?
                     pickupPro.pickupLocationController.text
